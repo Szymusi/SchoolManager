@@ -16,6 +16,5 @@ namespace SchoolManager.Desktop
         {
             InitializeComponent();
         }
-
     }
 }
