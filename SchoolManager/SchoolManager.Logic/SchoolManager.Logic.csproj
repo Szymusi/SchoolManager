@@ -44,6 +44,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GradeOperations\GradeOperationsService.cs" />
     <Compile Include="Services\GradeOperations\IGradeOperationsService.cs" />
+    <Compile Include="Services\Users\IUserService.cs" />
+    <Compile Include="Services\Users\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolManager.Data\SchoolManager.Data.csproj">

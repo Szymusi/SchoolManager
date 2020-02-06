@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmSignIn : Form
     {
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
         public FrmSignIn()
         {
             InitializeComponent();
@@ -19,8 +15,10 @@ namespace SchoolManager.Desktop.Forms
 
         private void BtnSignIn_MouseClick(object sender, MouseEventArgs e)
         {
-            string emial = TbxEmail.Text;
-            string password = TbxPassword.Text;
+            Email = TbxEmail.Text;
+            Password = TbxPassword.Text;
+
+            DialogResult = DialogResult.OK;
         }
     }
 }

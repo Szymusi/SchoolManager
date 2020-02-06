@@ -85,5 +85,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolManager.Logic\SchoolManager.Logic.csproj">
+      <Project>{85E96747-703A-452A-A305-3B6D52D14ED9}</Project>
+      <Name>SchoolManager.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

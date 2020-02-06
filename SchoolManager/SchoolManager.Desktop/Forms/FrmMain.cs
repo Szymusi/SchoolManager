@@ -1,9 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using SchoolManager.Logic.Services.Users;
+using System;
+using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmMain : Form
     {
+        private IUserService _userService = new UserService();
         public FrmMain()
         {
             SignIn();
@@ -19,11 +22,16 @@ namespace SchoolManager.Desktop.Forms
 
             if(dialogResult == DialogResult.OK)
             {
+                bool signIn = _userService.SignIn(frmSignIn.Email, frmSignIn.Password);
 
+                if (!signIn)
+                {
+                    Environment.Exit(0);
+                }
             }
             else
             {
-                Application.Exit();
+                Environment.Exit(0);
             }
         }
     }
