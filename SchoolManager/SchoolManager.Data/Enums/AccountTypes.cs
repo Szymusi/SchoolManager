@@ -4,6 +4,6 @@
     {
         Teacher, 
         Student,
-        Parrent
+        Parent
     }
 }

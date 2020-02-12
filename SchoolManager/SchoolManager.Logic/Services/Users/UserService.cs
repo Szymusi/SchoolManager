@@ -9,6 +9,8 @@ namespace SchoolManager.Logic.Services.Users
     {
         private IUserRepository _userRepository = new MockUserRepository();
 
+        public User SignedInUser { get; set; }
+
         public bool SignIn(string email, string password)
         {
             IEnumerable<User> users= _userRepository.GetUsers();
@@ -16,6 +18,11 @@ namespace SchoolManager.Logic.Services.Users
             var user = users.SingleOrDefault(u => u.Email == email && u.Password == password);
 
             bool userFound = user != null;
+
+            if (userFound)
+            {
+                SignedInUser = user;
+            }
 
             return userFound;
         }

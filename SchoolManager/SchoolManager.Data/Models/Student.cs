@@ -4,9 +4,8 @@ namespace SchoolManager.Data.Models
 {
     public class Student
     {
-        public int Id { get; set; }
+        public User User { get; set; }
 
         public List<Grade> Grades { get; set; }
-        
     }
 }

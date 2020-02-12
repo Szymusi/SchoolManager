@@ -30,7 +30,7 @@ namespace SchoolManager.Data.Repositories.Users
                     Surname = "Szafran",
                     Email = "seba@mail.com",
                     Password = "123456",
-                    AccountType = AccountTypes.Parrent
+                    AccountType = AccountTypes.Parent
                 }
             };
 

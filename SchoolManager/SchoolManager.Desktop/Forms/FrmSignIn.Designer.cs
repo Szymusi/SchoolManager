@@ -65,8 +65,10 @@
             this.TbxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TbxPassword.Location = new System.Drawing.Point(126, 125);
             this.TbxPassword.Name = "TbxPassword";
+            this.TbxPassword.PasswordChar = '*';
             this.TbxPassword.Size = new System.Drawing.Size(198, 20);
             this.TbxPassword.TabIndex = 4;
+            this.TbxPassword.Text = "123456";
             // 
             // LblPassword
             // 
@@ -112,6 +114,7 @@
             this.TbxEmail.Name = "TbxEmail";
             this.TbxEmail.Size = new System.Drawing.Size(198, 20);
             this.TbxEmail.TabIndex = 2;
+            this.TbxEmail.Text = "seba@mail.com";
             // 
             // BtnSignIn
             // 

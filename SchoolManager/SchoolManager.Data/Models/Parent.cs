@@ -1,9 +1,7 @@
 ﻿namespace SchoolManager.Data.Models
 {
-    public class Teacher
+    public class Parent
     {
         public User User { get; set; }
-
-        // Rzeczy typowe dla teachera
     }
 }

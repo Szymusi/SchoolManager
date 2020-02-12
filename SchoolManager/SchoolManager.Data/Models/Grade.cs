@@ -9,5 +9,9 @@ namespace SchoolManager.Data.Models
         public double Value { get; set; }
 
         public int Weight { get; set; }
+
+        public string Task { get; set; }
+
+        public string Comment { get; set; }
     }
 }

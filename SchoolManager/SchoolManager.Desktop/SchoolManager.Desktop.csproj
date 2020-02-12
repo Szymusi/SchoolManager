@@ -60,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSignIn.resx">
       <DependentUpon>FrmSignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolManager.Data\SchoolManager.Data.csproj">
+      <Project>{5C104B5C-8270-4CDF-BBA8-3E19B82BEC5A}</Project>
+      <Name>SchoolManager.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolManager.Logic\SchoolManager.Logic.csproj">
       <Project>{85E96747-703A-452A-A305-3B6D52D14ED9}</Project>
       <Name>SchoolManager.Logic</Name>

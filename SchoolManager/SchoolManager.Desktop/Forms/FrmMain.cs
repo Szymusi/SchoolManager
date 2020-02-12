@@ -6,12 +6,15 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmMain : Form
     {
-        private IUserService _userService = new UserService();
+        private readonly IUserService _userService = new UserService();
+
         public FrmMain()
         {
             SignIn();
 
             InitializeComponent();
+
+            DisplaySignedInUserInfo();
         }
 
         private void SignIn()
@@ -33,6 +36,12 @@ namespace SchoolManager.Desktop.Forms
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void DisplaySignedInUserInfo()
+        {
+            string signedInUserInfo = $"Name: {_userService.SignedInUser.Name} {_userService.SignedInUser.Surname}   Role: {_userService.SignedInUser.AccountType} ";
+            LblAccountInfo.Text = signedInUserInfo;
         }
     }
 }
