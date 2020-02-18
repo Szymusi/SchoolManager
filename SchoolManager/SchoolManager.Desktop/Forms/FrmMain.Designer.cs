@@ -28,14 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlMain = new System.Windows.Forms.TableLayoutPanel();
             this.TabMain = new System.Windows.Forms.TabControl();
             this.PageGrades = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.GridGrades = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.PlnButton = new System.Windows.Forms.TableLayoutPanel();
             this.LblAccountInfo = new System.Windows.Forms.Label();
+            this.ColumnSubjects = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAverage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PnlMain.SuspendLayout();
             this.TabMain.SuspendLayout();
+            this.PageGrades.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridGrades)).BeginInit();
             this.PlnButton.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +78,7 @@
             // 
             // PageGrades
             // 
+            this.PageGrades.Controls.Add(this.tableLayoutPanel1);
             this.PageGrades.Location = new System.Drawing.Point(4, 22);
             this.PageGrades.Name = "PageGrades";
             this.PageGrades.Padding = new System.Windows.Forms.Padding(3);
@@ -76,6 +86,47 @@
             this.PageGrades.TabIndex = 0;
             this.PageGrades.Text = "Grades";
             this.PageGrades.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.GridGrades, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 328);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // GridGrades
+            // 
+            this.GridGrades.AllowUserToAddRows = false;
+            this.GridGrades.AllowUserToDeleteRows = false;
+            this.GridGrades.AllowUserToResizeColumns = false;
+            this.GridGrades.AllowUserToResizeRows = false;
+            this.GridGrades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridGrades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.GridGrades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridGrades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSubjects,
+            this.ColumnGrades,
+            this.ColumnAverage});
+            this.GridGrades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridGrades.Location = new System.Drawing.Point(3, 3);
+            this.GridGrades.Name = "GridGrades";
+            this.GridGrades.RowHeadersVisible = false;
+            this.GridGrades.Size = new System.Drawing.Size(387, 322);
+            this.GridGrades.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -111,6 +162,21 @@
             this.LblAccountInfo.Size = new System.Drawing.Size(0, 13);
             this.LblAccountInfo.TabIndex = 0;
             // 
+            // ColumnSubjects
+            // 
+            this.ColumnSubjects.HeaderText = "Subjects";
+            this.ColumnSubjects.Name = "ColumnSubjects";
+            // 
+            // ColumnGrades
+            // 
+            this.ColumnGrades.HeaderText = "Grades";
+            this.ColumnGrades.Name = "ColumnGrades";
+            // 
+            // ColumnAverage
+            // 
+            this.ColumnAverage.HeaderText = "Average";
+            this.ColumnAverage.Name = "ColumnAverage";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +187,9 @@
             this.Text = "School Manager";
             this.PnlMain.ResumeLayout(false);
             this.TabMain.ResumeLayout(false);
+            this.PageGrades.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridGrades)).EndInit();
             this.PlnButton.ResumeLayout(false);
             this.PlnButton.PerformLayout();
             this.ResumeLayout(false);
@@ -135,5 +204,10 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel PlnButton;
         private System.Windows.Forms.Label LblAccountInfo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView GridGrades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubjects;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAverage;
     }
 }
