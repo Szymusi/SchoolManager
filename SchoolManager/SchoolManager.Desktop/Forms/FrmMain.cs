@@ -1,7 +1,5 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
-using SchoolManager.Data.Repositories.Students;
-using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Students;
 using SchoolManager.Logic.Services.Users;
@@ -57,9 +55,9 @@ namespace SchoolManager.Desktop.Forms
 
             IEnumerable<SchoolSubjects> schoolSubjects = (IEnumerable<SchoolSubjects>)Enum.GetValues(typeof(SchoolSubjects));
 
-            foreach (var subject in schoolSubjects)
+            foreach (var schoolSubject in schoolSubjects)
             {
-                IEnumerable<Grade> subjectGrades = student.Grades.Where(g => g.SchoolSubject == subject);
+                IEnumerable<Grade> subjectGrades = student.Grades.Where(g => g.SchoolSubject == schoolSubject);
 
                 double avarage = _gradeService.CalculateAvarage(subjectGrades);
 
@@ -67,8 +65,32 @@ namespace SchoolManager.Desktop.Forms
 
                 string gradesString = string.Join(", ", gradeValues);
 
-                GridGrades.Rows.Add(subject, gradesString, avarage);
+                GridGrades.Rows.Add(schoolSubject, gradesString, avarage);
             }
+
+
+        }
+
+        private void GridGrades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Student student = _studentService.GetStudentByUser(_userService.SignedInUser);
+
+            var selectedRow = GridGrades.Rows[e.RowIndex];
+            var selectedCell = selectedRow.Cells[0];
+            var selectedSubjectObject = selectedCell.Value;
+            var selectedSubjectEnum = (SchoolSubjects)selectedSubjectObject;
+
+            TxtGradesInfoSubjectName.Text = selectedSubjectEnum.ToString();
+
+            GridGradeInfo.Rows.Clear();
+
+            IEnumerable<Grade> selectedSubjectGrades = student.Grades.Where(g => g.SchoolSubject == selectedSubjectEnum);
+
+            foreach (var grade in selectedSubjectGrades)
+            {
+                GridGradeInfo.Rows.Add(grade.Value, grade.Weight, grade.Task, grade.Comment);
+            }
+
         }
     }
 }
