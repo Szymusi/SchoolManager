@@ -1,6 +1,6 @@
 ﻿namespace SchoolManager.Desktop.Forms
 {
-    partial class FrmMain
+    partial class FrmMainStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlMain = new System.Windows.Forms.TableLayoutPanel();
             this.TabMain = new System.Windows.Forms.TabControl();
             this.PageGrades = new System.Windows.Forms.TabPage();
@@ -39,14 +40,14 @@
             this.ColumnAverage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblGradeInfo = new System.Windows.Forms.TableLayoutPanel();
             this.GridGradeInfo = new System.Windows.Forms.DataGridView();
-            this.TxtGradesInfoSubjectName = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.PlnButton = new System.Windows.Forms.TableLayoutPanel();
-            this.LblAccountInfo = new System.Windows.Forms.Label();
             this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtGradesInfoSubjectName = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.PlnButton = new System.Windows.Forms.TableLayoutPanel();
+            this.LblAccountInfo = new System.Windows.Forms.Label();
             this.PnlMain.SuspendLayout();
             this.TabMain.SuspendLayout();
             this.PageGrades.SuspendLayout();
@@ -184,8 +185,16 @@
             this.GridGradeInfo.AllowUserToResizeColumns = false;
             this.GridGradeInfo.AllowUserToResizeRows = false;
             this.GridGradeInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridGradeInfo.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.GridGradeInfo.BackgroundColor = System.Drawing.Color.White;
             this.GridGradeInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridGradeInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridGradeInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnGradeValue,
             this.ColumnGradeWeight,
@@ -199,6 +208,32 @@
             this.GridGradeInfo.RowHeadersVisible = false;
             this.GridGradeInfo.Size = new System.Drawing.Size(379, 264);
             this.GridGradeInfo.TabIndex = 1;
+            // 
+            // ColumnGradeValue
+            // 
+            this.ColumnGradeValue.FillWeight = 30F;
+            this.ColumnGradeValue.HeaderText = "Grade";
+            this.ColumnGradeValue.Name = "ColumnGradeValue";
+            this.ColumnGradeValue.ReadOnly = true;
+            // 
+            // ColumnGradeWeight
+            // 
+            this.ColumnGradeWeight.FillWeight = 35F;
+            this.ColumnGradeWeight.HeaderText = "Weight";
+            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
+            this.ColumnGradeWeight.ReadOnly = true;
+            // 
+            // ColumnGradeTask
+            // 
+            this.ColumnGradeTask.HeaderText = "Task";
+            this.ColumnGradeTask.Name = "ColumnGradeTask";
+            this.ColumnGradeTask.ReadOnly = true;
+            // 
+            // ColumnGradeComment
+            // 
+            this.ColumnGradeComment.HeaderText = "Comment";
+            this.ColumnGradeComment.Name = "ColumnGradeComment";
+            this.ColumnGradeComment.ReadOnly = true;
             // 
             // TxtGradesInfoSubjectName
             // 
@@ -216,7 +251,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 334);
+            this.tabPage2.Size = new System.Drawing.Size(788, 311);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -245,39 +280,13 @@
             this.LblAccountInfo.Size = new System.Drawing.Size(0, 13);
             this.LblAccountInfo.TabIndex = 0;
             // 
-            // ColumnGradeValue
-            // 
-            this.ColumnGradeValue.FillWeight = 30F;
-            this.ColumnGradeValue.HeaderText = "Grade";
-            this.ColumnGradeValue.Name = "ColumnGradeValue";
-            this.ColumnGradeValue.ReadOnly = true;
-            // 
-            // ColumnGradeWeight
-            // 
-            this.ColumnGradeWeight.FillWeight = 35F;
-            this.ColumnGradeWeight.HeaderText = "Weight";
-            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
-            this.ColumnGradeWeight.ReadOnly = true;
-            // 
-            // ColumnGradeTask
-            // 
-            this.ColumnGradeTask.HeaderText = "Task";
-            this.ColumnGradeTask.Name = "ColumnGradeTask";
-            this.ColumnGradeTask.ReadOnly = true;
-            // 
-            // ColumnGradeComment
-            // 
-            this.ColumnGradeComment.HeaderText = "Comment";
-            this.ColumnGradeComment.Name = "ColumnGradeComment";
-            this.ColumnGradeComment.ReadOnly = true;
-            // 
-            // FrmMain
+            // FrmMainStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 422);
             this.Controls.Add(this.PnlMain);
-            this.Name = "FrmMain";
+            this.Name = "FrmMainStudent";
             this.Text = "School Manager";
             this.PnlMain.ResumeLayout(false);
             this.TabMain.ResumeLayout(false);

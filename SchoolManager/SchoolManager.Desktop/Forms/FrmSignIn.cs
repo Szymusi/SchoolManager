@@ -1,12 +1,14 @@
-﻿using System.Windows.Forms;
+﻿using SchoolManager.Data.Enums;
+using SchoolManager.Data.Models;
+using SchoolManager.Logic.Services.Users;
+using System;
+using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmSignIn : Form
     {
-        public string Email { get; set; }
-
-        public string Password { get; set; }
+        private readonly IUserService _userService = new UserService();
 
         public FrmSignIn()
         {
@@ -15,10 +17,40 @@ namespace SchoolManager.Desktop.Forms
 
         private void BtnSignIn_MouseClick(object sender, MouseEventArgs e)
         {
-            Email = TbxEmail.Text;
-            Password = TbxPassword.Text;
+            string email = TbxEmail.Text;
+            string password = TbxPassword.Text;
 
-            DialogResult = DialogResult.OK;
+            SignIn(email, password);
+
+            Form frmMain = null;
+
+            switch (_userService.SignedInUser.AccountType)
+            {
+                case AccountTypes.Parent:
+                    frmMain = new FrmMainParent(_userService);
+                    break;
+                case AccountTypes.Student:
+                    frmMain = new FrmMainStudent(_userService);
+                    break;
+                case AccountTypes.Teacher:
+                    frmMain = new FrmMainTeacher(_userService);
+                    break;
+            }
+
+            Hide();
+            frmMain.Closed += (s, args) => Close();
+            frmMain.Show();
         }
+
+        private void SignIn(string email, string password)
+        {
+            bool signIn = _userService.SignIn(email, password);
+
+            if (!signIn)
+            {
+                Environment.Exit(0);
+            }
+        }
+
     }
 }

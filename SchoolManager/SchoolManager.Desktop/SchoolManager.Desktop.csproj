@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\FrmMain.cs">
+    <Compile Include="Forms\FrmMainParent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <Compile Include="Forms\FrmMainParent.Designer.cs">
+      <DependentUpon>FrmMainParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMainStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMainStudent.Designer.cs">
+      <DependentUpon>FrmMainStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMainTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMainTeacher.Designer.cs">
+      <DependentUpon>FrmMainTeacher.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmSignIn.cs">
       <SubType>Form</SubType>
@@ -60,8 +72,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMainParent.resx">
+      <DependentUpon>FrmMainParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMainStudent.resx">
+      <DependentUpon>FrmMainStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMainTeacher.resx">
+      <DependentUpon>FrmMainTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSignIn.resx">
       <DependentUpon>FrmSignIn.cs</DependentUpon>

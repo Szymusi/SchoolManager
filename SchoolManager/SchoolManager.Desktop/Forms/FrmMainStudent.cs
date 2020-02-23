@@ -10,41 +10,22 @@ using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Forms
 {
-    public partial class FrmMain : Form
+    public partial class FrmMainStudent : Form
     {
         private readonly IUserService _userService = new UserService();
         private readonly IStudentService _studentService = new StudentService();
         private readonly IGradeService _gradeService = new GradeService();
 
-        public FrmMain()
+        public FrmMainStudent(IUserService userService)
         {
-            SignIn();
+            _userService = userService;
 
             InitializeComponent();
 
             Initialize();
         }
 
-        private void SignIn()
-        {
-            FrmSignIn frmSignIn = new FrmSignIn();
 
-            DialogResult dialogResult = frmSignIn.ShowDialog();
-
-            if (dialogResult == DialogResult.OK)
-            {
-                bool signIn = _userService.SignIn(frmSignIn.Email, frmSignIn.Password);
-
-                if (!signIn)
-                {
-                    Environment.Exit(0);
-                }
-            }
-            else
-            {
-                Environment.Exit(0);
-            }
-        }
 
         private void Initialize()
         {
@@ -68,7 +49,7 @@ namespace SchoolManager.Desktop.Forms
                 GridGrades.Rows.Add(schoolSubject, gradesString, avarage);
             }
 
-
+            GridGrades_CellMouseClick(GridGrades, new DataGridViewCellMouseEventArgs(0, 0, 0, 0, new MouseEventArgs( MouseButtons.Left, 1, 0,0,0)));
         }
 
         private void GridGrades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
