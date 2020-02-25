@@ -28,13 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.TblMain = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
+            // 
+            // TblMain
+            // 
+            this.TblMain.BackColor = System.Drawing.Color.White;
+            this.TblMain.ColumnCount = 2;
+            this.TblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TblMain.Location = new System.Drawing.Point(0, 0);
+            this.TblMain.Name = "TblMain";
+            this.TblMain.RowCount = 2;
+            this.TblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMain.Size = new System.Drawing.Size(800, 450);
+            this.TblMain.TabIndex = 0;
             // 
             // FrmMainTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TblMain);
             this.Name = "FrmMainTeacher";
             this.Text = "School Manager";
             this.ResumeLayout(false);
@@ -42,5 +59,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.TableLayoutPanel TblMain;
     }
 }

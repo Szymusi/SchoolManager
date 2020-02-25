@@ -7,5 +7,10 @@ namespace SchoolManager.Data.Models
         public User User { get; set; }
 
         public List<Grade> Grades { get; set; }
+
+        public Student()
+        {
+            Grades = new List<Grade>();
+        }
     }
 }

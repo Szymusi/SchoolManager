@@ -1,9 +1,12 @@
-﻿namespace SchoolManager.Data.Models
+﻿using SchoolManager.Data.Enums;
+using System.Collections.Generic;
+
+namespace SchoolManager.Data.Models
 {
     public class Teacher
     {
-        public User User { get; set; }
+        public User User { get; set; } 
 
-        // Rzeczy typowe dla teachera
+        public SchoolSubjects Profesion { get; set; }
     }
 }

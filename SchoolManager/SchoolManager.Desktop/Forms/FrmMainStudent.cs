@@ -61,7 +61,7 @@ namespace SchoolManager.Desktop.Forms
             var selectedSubjectObject = selectedCell.Value;
             var selectedSubjectEnum = (SchoolSubjects)selectedSubjectObject;
 
-            TxtGradesInfoSubjectName.Text = selectedSubjectEnum.ToString();
+            LblGradeInfoSubjectName.Text = selectedSubjectEnum.ToString();
 
             GridGradeInfo.Rows.Clear();
 

@@ -11,5 +11,12 @@ namespace SchoolManager.Data.Models
         public int Level { get; set; }
 
         public List<Student> Students { get; set; }
+
+        public List<Teacher> Teachers { get; set; }
+
+        public Class()
+        {
+            Students = new List<Student>();
+        }
     }
 }
