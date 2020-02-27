@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using SchoolManager.Data.Enums;
+﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
+using SchoolManager.Data.Models.UserTypes;
+using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Students
 {

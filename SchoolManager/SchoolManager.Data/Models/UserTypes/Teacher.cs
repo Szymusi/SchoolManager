@@ -1,9 +1,8 @@
 ﻿using SchoolManager.Data.Enums;
-using System.Collections.Generic;
 
-namespace SchoolManager.Data.Models
+namespace SchoolManager.Data.Models.UserTypes
 {
-    public class Teacher
+    public class Teacher : IUser
     {
         public User User { get; set; } 
 

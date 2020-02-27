@@ -1,5 +1,6 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
+using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Students;
 using SchoolManager.Logic.Services.Users;
@@ -25,11 +26,9 @@ namespace SchoolManager.Desktop.Forms
             Initialize();
         }
 
-
-
         private void Initialize()
         {
-            Student student = _studentService.GetStudentByUser(_userService.SignedInUser);
+            Student student = _userService.GetSpecificUserType<Student>(_userService.SignedInUser);
 
             string signedInUserInfo = $"Name: {_userService.SignedInUser.Name} {_userService.SignedInUser.Surname}   Role: {_userService.SignedInUser.AccountType} ";
             LblAccountInfo.Text = signedInUserInfo;
@@ -54,7 +53,7 @@ namespace SchoolManager.Desktop.Forms
 
         private void GridGrades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Student student = _studentService.GetStudentByUser(_userService.SignedInUser);
+            Student student = _userService.GetSpecificUserType<Student>(_userService.SignedInUser);
 
             var selectedRow = GridGrades.Rows[e.RowIndex];
             var selectedCell = selectedRow.Cells[0];

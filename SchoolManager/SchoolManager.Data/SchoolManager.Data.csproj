@@ -45,13 +45,18 @@
     <Compile Include="Enums\SchoolSubjects.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Grade.cs" />
-    <Compile Include="Models\Parent.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\UserTypes\IUser.cs" />
+    <Compile Include="Models\UserTypes\Parent.cs" />
+    <Compile Include="Models\UserTypes\Student.cs" />
+    <Compile Include="Models\UserTypes\Teacher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Classes\IClassRepository.cs" />
+    <Compile Include="Repositories\Classes\MockClassRepository.cs" />
     <Compile Include="Repositories\Students\IStudentRepository.cs" />
     <Compile Include="Repositories\Students\MockStudentRepository.cs" />
+    <Compile Include="Repositories\Teachers\ITeacherRepository.cs" />
+    <Compile Include="Repositories\Teachers\MockTeacherRepository.cs" />
     <Compile Include="Repositories\Users\IUserRepository.cs" />
     <Compile Include="Repositories\Users\MockUserRepository.cs" />
   </ItemGroup>

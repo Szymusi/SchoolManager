@@ -1,10 +1,11 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
+using SchoolManager.Data.Models.UserTypes;
 using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Teachers
 {
-    class MockTeacherRepository : ITeacherRepository
+    public class MockTeacherRepository : ITeacherRepository
     {
         private readonly List<Teacher> _teachers = new List<Teacher>
         {

@@ -46,6 +46,8 @@
     <Compile Include="Services\Grades\IGradeService.cs" />
     <Compile Include="Services\Students\IStudentService.cs" />
     <Compile Include="Services\Students\StudentService.cs" />
+    <Compile Include="Services\Teachers\ITeacherService.cs" />
+    <Compile Include="Services\Teachers\TeacherService.cs" />
     <Compile Include="Services\Users\IUserService.cs" />
     <Compile Include="Services\Users\UserService.cs" />
   </ItemGroup>

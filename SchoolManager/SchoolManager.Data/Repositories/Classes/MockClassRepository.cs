@@ -1,5 +1,6 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
+using SchoolManager.Data.Models.UserTypes;
 using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Classes
@@ -1502,6 +1503,7 @@ namespace SchoolManager.Data.Repositories.Classes
                 }
             },
         };
+
         public IEnumerable<Class> GetClasses()
         {
             return _classes;

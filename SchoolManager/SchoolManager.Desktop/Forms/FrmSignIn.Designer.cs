@@ -68,7 +68,7 @@
             this.TbxPassword.PasswordChar = '*';
             this.TbxPassword.Size = new System.Drawing.Size(198, 20);
             this.TbxPassword.TabIndex = 4;
-            this.TbxPassword.Text = "123";
+            this.TbxPassword.Text = "1234";
             // 
             // LblPassword
             // 
@@ -114,7 +114,7 @@
             this.TbxEmail.Name = "TbxEmail";
             this.TbxEmail.Size = new System.Drawing.Size(198, 20);
             this.TbxEmail.TabIndex = 2;
-            this.TbxEmail.Text = "maciej@mail.com";
+            this.TbxEmail.Text = "mika@mail.com";
             // 
             // BtnSignIn
             // 

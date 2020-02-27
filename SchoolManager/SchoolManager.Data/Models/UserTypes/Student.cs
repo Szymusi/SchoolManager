@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace SchoolManager.Data.Models
+namespace SchoolManager.Data.Models.UserTypes
 {
-    public class Student
+    public class Student : IUser
     {
         public User User { get; set; }
 

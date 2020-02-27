@@ -7,5 +7,7 @@ namespace SchoolManager.Logic.Services.Users
         User SignedInUser { get; }
 
         bool SignIn(string email, string password);
+
+        TAccountType GetSpecificUserType<TAccountType>(User user);
     }
 }
