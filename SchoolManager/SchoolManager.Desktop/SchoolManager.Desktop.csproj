@@ -72,6 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ComboBoxHelper\ComboBoxHelp.cs" />
+    <Compile Include="Services\ComboBoxHelper\IComboBoxHelp.cs" />
     <EmbeddedResource Include="Forms\FrmMainParent.resx">
       <DependentUpon>FrmMainParent.cs</DependentUpon>
     </EmbeddedResource>

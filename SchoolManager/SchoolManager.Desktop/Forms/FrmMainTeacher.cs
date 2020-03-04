@@ -1,7 +1,12 @@
-﻿using SchoolManager.Logic.Services.Grades;
-using SchoolManager.Logic.Services.Students;
-using SchoolManager.Logic.Services.Teachers;
+﻿using SchoolManager.Data.Models;
+using SchoolManager.Data.Models.UserTypes;
+using SchoolManager.Data.Repositories.Classes;
+using SchoolManager.Data.Repositories.Teachers;
+using SchoolManager.Desktop.Services.ComboBoxHelper;
 using SchoolManager.Logic.Services.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Forms
@@ -9,9 +14,11 @@ namespace SchoolManager.Desktop.Forms
     public partial class FrmMainTeacher : Form
     {
         private readonly IUserService _userService = new UserService();
-        private readonly IStudentService _studentService = new StudentService();
-        private readonly IGradeService _gradeService = new GradeService();
-        private readonly ITeacherService _teacherService = new TeacherService(); 
+        private readonly IClassRepository _classRepository = new MockClassRepository();
+        private readonly ITeacherRepository _teacherRepository = new MockTeacherRepository();
+
+        private readonly IComboBoxHelp _comboBoxHelp = new ComboBoxHelp();
+
 
         public FrmMainTeacher(IUserService userService)
         {
@@ -22,9 +29,27 @@ namespace SchoolManager.Desktop.Forms
 
         private void Initialize()
         {
+            Teacher teacher = _userService.GetSpecificUserType<Teacher>(_userService.SignedInUser);
+            IEnumerable<Class> classes = _classRepository.GetClasses();
+            IEnumerable<Class> teachersClasses = classes.Where(c => c.Teachers.Contains(teacher));
+
+            _comboBoxHelp.AddElementsToComboBox(CmbClasses, classes, c => c.Name);
+
             string signedInUserInfo = $"Name:{_userService.SignedInUser.Name} {_userService.SignedInUser.Surname}   Role: {_userService.SignedInUser.AccountType} ";
 
             LblAccountInfo.Text = signedInUserInfo;
+            CmbClasses.SelectedIndex = 0;
+        }
+
+        private void CmbClasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IEnumerable<Class> classes = _classRepository.GetClasses();
+
+            Class selectedClass = _comboBoxHelp.GetSelectedElement(CmbClasses, classes, c => c.Name);
+
+            _comboBoxHelp.AddElementsToComboBox(CmbStudents, selectedClass.Students, s => $"{s.User.Name} {s.User.Surname}");
+
+            CmbStudents.SelectedIndex = 0;
         }
     }
 }

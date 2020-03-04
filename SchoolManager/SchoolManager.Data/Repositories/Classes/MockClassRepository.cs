@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Classes
 {
-    class MockClassRepository : IClassRepository
+    public class MockClassRepository : IClassRepository
     {
         private readonly List<Class> _classes = new List<Class>
         {

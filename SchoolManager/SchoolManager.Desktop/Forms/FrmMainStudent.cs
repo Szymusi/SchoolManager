@@ -2,7 +2,6 @@
 using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Logic.Services.Grades;
-using SchoolManager.Logic.Services.Students;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,6 @@ namespace SchoolManager.Desktop.Forms
     public partial class FrmMainStudent : Form
     {
         private readonly IUserService _userService = new UserService();
-        private readonly IStudentService _studentService = new StudentService();
         private readonly IGradeService _gradeService = new GradeService();
 
         public FrmMainStudent(IUserService userService)
