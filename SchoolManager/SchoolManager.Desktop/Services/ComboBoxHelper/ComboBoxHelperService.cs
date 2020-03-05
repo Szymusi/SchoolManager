@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Services.ComboBoxHelper
 {
-    public class ComboBoxHelp : IComboBoxHelp
+    public class ComboBoxHelperService : IComboBoxHelperService
     {
         public void AddElementsToComboBox<TItem>(ComboBox comboBox, IEnumerable<TItem> items, Func<TItem, string> displayFunc)
         {

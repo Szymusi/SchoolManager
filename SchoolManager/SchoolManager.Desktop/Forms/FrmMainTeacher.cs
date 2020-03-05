@@ -17,7 +17,7 @@ namespace SchoolManager.Desktop.Forms
         private readonly IClassRepository _classRepository = new MockClassRepository();
         private readonly ITeacherRepository _teacherRepository = new MockTeacherRepository();
 
-        private readonly IComboBoxHelp _comboBoxHelp = new ComboBoxHelp();
+        private readonly IComboBoxHelperService _comboBoxHelperService = new ComboBoxHelperService();
 
 
         public FrmMainTeacher(IUserService userService)
@@ -33,7 +33,7 @@ namespace SchoolManager.Desktop.Forms
             IEnumerable<Class> classes = _classRepository.GetClasses();
             IEnumerable<Class> teachersClasses = classes.Where(c => c.Teachers.Contains(teacher));
 
-            _comboBoxHelp.AddElementsToComboBox(CmbClasses, classes, c => c.Name);
+            _comboBoxHelperService.AddElementsToComboBox(CmbClasses, classes, c => c.Name);
 
             string signedInUserInfo = $"Name:{_userService.SignedInUser.Name} {_userService.SignedInUser.Surname}   Role: {_userService.SignedInUser.AccountType} ";
 
@@ -45,9 +45,9 @@ namespace SchoolManager.Desktop.Forms
         {
             IEnumerable<Class> classes = _classRepository.GetClasses();
 
-            Class selectedClass = _comboBoxHelp.GetSelectedElement(CmbClasses, classes, c => c.Name);
+            Class selectedClass = _comboBoxHelperService.GetSelectedElement(CmbClasses, classes, c => c.Name);
 
-            _comboBoxHelp.AddElementsToComboBox(CmbStudents, selectedClass.Students, s => $"{s.User.Name} {s.User.Surname}");
+            _comboBoxHelperService.AddElementsToComboBox(CmbStudents, selectedClass.Students, s => $"{s.User.Name} {s.User.Surname}");
 
             CmbStudents.SelectedIndex = 0;
         }
