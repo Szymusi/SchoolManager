@@ -1,4 +1,5 @@
-﻿using SchoolManager.Data.Enums;
+﻿using Ninject;
+using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Data.Repositories.Classes;
@@ -51,6 +52,14 @@ namespace SchoolManager.Desktop.Forms
             Initialize();
         }
 
+        private void Ninject()
+        {
+            IKernel kernel = new StandardKernel();
+            kernel.Bind<IUserRepository>().To<MockUserRepository>();
+            kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
+            kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
+        }
+
         private void Initialize()
         {
             Student student = _userService.GetSpecificUserType<Student>(_userService.SignedInUser);
@@ -75,6 +84,7 @@ namespace SchoolManager.Desktop.Forms
 
             GridGrades_CellMouseClick(GridGrades, new DataGridViewCellMouseEventArgs(0, 0, 0, 0, new MouseEventArgs( MouseButtons.Left, 1, 0,0,0)));
         }
+
 
         private void GridGrades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

@@ -81,16 +81,14 @@ namespace SchoolManager.Desktop.Forms
             IEnumerable<Student> students = _studentRepository.GetStudents();
 
             Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
-
-            GridGradeInfo.Rows.Clear();
-
             IEnumerable<Grade> selectedStudentGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion);
 
-            foreach (var grade in selectedStudentGrades)
-            {
-                GridGradeInfo.Rows.Add(grade.Value, grade.Weight, grade.Task, grade.Comment);
-            }
-            GridGradeInfo.Rows[0].Selected = false;
+            _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentGrades);
+        }
+
+        private void GridGradeInfo_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
