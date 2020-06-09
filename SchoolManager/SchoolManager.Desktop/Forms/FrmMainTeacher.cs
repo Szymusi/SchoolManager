@@ -4,6 +4,7 @@ using SchoolManager.Data.Repositories.Classes;
 using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
+using SchoolManager.Desktop.Services.GradesTab;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace SchoolManager.Desktop.Forms
         private readonly IStudentRepository _studentRpository = new MockStudentRepository();
 
         private readonly IComboBoxHelperService _comboBoxHelperService = new ComboBoxHelperService();
-
+        private readonly IGradesTabService _gradesTabService = new GradesTabService();
 
         public FrmMainTeacher(IUserService userService)
         {
@@ -58,18 +59,15 @@ namespace SchoolManager.Desktop.Forms
         {
             Teacher teacher = _userService.GetSpecificUserType<Teacher>(_userService.SignedInUser);
             IEnumerable<Student> students = _studentRpository.GetStudents();
-
             Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
-
-            GridGradeInfo.Rows.Clear();
-
             IEnumerable<Grade> selectedStudentGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion);
 
-            foreach (var grade in selectedStudentGrades)
-            {
-                GridGradeInfo.Rows.Add(grade.Value, grade.Weight, grade.Task, grade.Comment);
-            }
-            GridGradeInfo.Rows[0].Selected = false;
+            _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentGrades);
+        }
+
+        private void GridGradeInfo_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

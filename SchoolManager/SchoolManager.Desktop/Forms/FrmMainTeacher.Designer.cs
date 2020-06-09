@@ -38,14 +38,10 @@
             this.CmbStudents = new System.Windows.Forms.ComboBox();
             this.TblGradesAdministration = new System.Windows.Forms.TableLayoutPanel();
             this.GridGradeInfo = new System.Windows.Forms.DataGridView();
-            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TblAddGrade = new System.Windows.Forms.TableLayoutPanel();
+            this.TblModifyGrade = new System.Windows.Forms.TableLayoutPanel();
             this.LblComment = new System.Windows.Forms.Label();
             this.LblTask = new System.Windows.Forms.Label();
-            this.TextValue = new System.Windows.Forms.TextBox();
+            this.TxtValue = new System.Windows.Forms.TextBox();
             this.LblValue = new System.Windows.Forms.Label();
             this.LblWeight = new System.Windows.Forms.Label();
             this.TxtWeight = new System.Windows.Forms.TextBox();
@@ -56,13 +52,18 @@
             this.RadAdd = new System.Windows.Forms.RadioButton();
             this.RadEdit = new System.Windows.Forms.RadioButton();
             this.BtnOperation = new System.Windows.Forms.Button();
+            this.ColumnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblMain.SuspendLayout();
             this.TabMain.SuspendLayout();
             this.TabGradeAdministration.SuspendLayout();
             this.TblAdministrateGradesMain.SuspendLayout();
             this.TblGradesAdministration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridGradeInfo)).BeginInit();
-            this.TblAddGrade.SuspendLayout();
+            this.TblModifyGrade.SuspendLayout();
             this.TblOptionSelect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,7 +160,7 @@
             this.TblGradesAdministration.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.TblGradesAdministration.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.TblGradesAdministration.Controls.Add(this.GridGradeInfo, 0, 0);
-            this.TblGradesAdministration.Controls.Add(this.TblAddGrade, 1, 0);
+            this.TblGradesAdministration.Controls.Add(this.TblModifyGrade, 1, 0);
             this.TblGradesAdministration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TblGradesAdministration.Location = new System.Drawing.Point(3, 32);
             this.TblGradesAdministration.Name = "TblGradesAdministration";
@@ -188,6 +189,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.GridGradeInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridGradeInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnGradeId,
             this.ColumnGradeValue,
             this.ColumnGradeWeight,
             this.ColumnGradeTask,
@@ -202,60 +204,35 @@
             this.GridGradeInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridGradeInfo.Size = new System.Drawing.Size(458, 326);
             this.GridGradeInfo.TabIndex = 3;
+            this.GridGradeInfo.SelectionChanged += new System.EventHandler(this.GridGradeInfo_SelectionChanged);
             // 
-            // ColumnGradeValue
+            // TblModifyGrade
             // 
-            this.ColumnGradeValue.FillWeight = 30F;
-            this.ColumnGradeValue.HeaderText = "Grade";
-            this.ColumnGradeValue.Name = "ColumnGradeValue";
-            this.ColumnGradeValue.ReadOnly = true;
-            // 
-            // ColumnGradeWeight
-            // 
-            this.ColumnGradeWeight.FillWeight = 35F;
-            this.ColumnGradeWeight.HeaderText = "Weight";
-            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
-            this.ColumnGradeWeight.ReadOnly = true;
-            // 
-            // ColumnGradeTask
-            // 
-            this.ColumnGradeTask.HeaderText = "Task";
-            this.ColumnGradeTask.Name = "ColumnGradeTask";
-            this.ColumnGradeTask.ReadOnly = true;
-            // 
-            // ColumnGradeComment
-            // 
-            this.ColumnGradeComment.HeaderText = "Comment";
-            this.ColumnGradeComment.Name = "ColumnGradeComment";
-            this.ColumnGradeComment.ReadOnly = true;
-            // 
-            // TblAddGrade
-            // 
-            this.TblAddGrade.ColumnCount = 2;
-            this.TblAddGrade.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TblAddGrade.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TblAddGrade.Controls.Add(this.LblComment, 1, 3);
-            this.TblAddGrade.Controls.Add(this.LblTask, 0, 3);
-            this.TblAddGrade.Controls.Add(this.TextValue, 0, 2);
-            this.TblAddGrade.Controls.Add(this.LblValue, 0, 1);
-            this.TblAddGrade.Controls.Add(this.LblWeight, 1, 1);
-            this.TblAddGrade.Controls.Add(this.TxtWeight, 1, 2);
-            this.TblAddGrade.Controls.Add(this.TxtTask, 0, 4);
-            this.TblAddGrade.Controls.Add(this.TxtComment, 1, 4);
-            this.TblAddGrade.Controls.Add(this.TblOptionSelect, 0, 0);
-            this.TblAddGrade.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TblAddGrade.Location = new System.Drawing.Point(467, 3);
-            this.TblAddGrade.Name = "TblAddGrade";
-            this.TblAddGrade.RowCount = 5;
-            this.TblGradesAdministration.SetRowSpan(this.TblAddGrade, 2);
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
-            this.TblAddGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TblAddGrade.Size = new System.Drawing.Size(304, 326);
-            this.TblAddGrade.TabIndex = 4;
+            this.TblModifyGrade.ColumnCount = 2;
+            this.TblModifyGrade.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblModifyGrade.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblModifyGrade.Controls.Add(this.LblComment, 1, 3);
+            this.TblModifyGrade.Controls.Add(this.LblTask, 0, 3);
+            this.TblModifyGrade.Controls.Add(this.TxtValue, 0, 2);
+            this.TblModifyGrade.Controls.Add(this.LblValue, 0, 1);
+            this.TblModifyGrade.Controls.Add(this.LblWeight, 1, 1);
+            this.TblModifyGrade.Controls.Add(this.TxtWeight, 1, 2);
+            this.TblModifyGrade.Controls.Add(this.TxtTask, 0, 4);
+            this.TblModifyGrade.Controls.Add(this.TxtComment, 1, 4);
+            this.TblModifyGrade.Controls.Add(this.TblOptionSelect, 0, 0);
+            this.TblModifyGrade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TblModifyGrade.Location = new System.Drawing.Point(467, 3);
+            this.TblModifyGrade.Name = "TblModifyGrade";
+            this.TblModifyGrade.RowCount = 5;
+            this.TblGradesAdministration.SetRowSpan(this.TblModifyGrade, 2);
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.TblModifyGrade.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TblModifyGrade.Size = new System.Drawing.Size(304, 326);
+            this.TblModifyGrade.TabIndex = 4;
             // 
             // LblComment
             // 
@@ -279,13 +256,13 @@
             this.LblTask.Text = "Task";
             this.LblTask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TextValue
+            // TxtValue
             // 
-            this.TextValue.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextValue.Location = new System.Drawing.Point(26, 131);
-            this.TextValue.Name = "TextValue";
-            this.TextValue.Size = new System.Drawing.Size(100, 20);
-            this.TextValue.TabIndex = 1;
+            this.TxtValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtValue.Location = new System.Drawing.Point(26, 131);
+            this.TxtValue.Name = "TxtValue";
+            this.TxtValue.Size = new System.Drawing.Size(100, 20);
+            this.TxtValue.TabIndex = 1;
             // 
             // LblValue
             // 
@@ -336,7 +313,7 @@
             // TblOptionSelect
             // 
             this.TblOptionSelect.ColumnCount = 4;
-            this.TblAddGrade.SetColumnSpan(this.TblOptionSelect, 2);
+            this.TblModifyGrade.SetColumnSpan(this.TblOptionSelect, 2);
             this.TblOptionSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TblOptionSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TblOptionSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -397,6 +374,39 @@
             this.BtnOperation.Text = "DUPA";
             this.BtnOperation.UseVisualStyleBackColor = true;
             // 
+            // ColumnGradeId
+            // 
+            this.ColumnGradeId.HeaderText = "Id";
+            this.ColumnGradeId.Name = "ColumnGradeId";
+            this.ColumnGradeId.ReadOnly = true;
+            this.ColumnGradeId.Visible = false;
+            // 
+            // ColumnGradeValue
+            // 
+            this.ColumnGradeValue.FillWeight = 30F;
+            this.ColumnGradeValue.HeaderText = "Grade";
+            this.ColumnGradeValue.Name = "ColumnGradeValue";
+            this.ColumnGradeValue.ReadOnly = true;
+            // 
+            // ColumnGradeWeight
+            // 
+            this.ColumnGradeWeight.FillWeight = 35F;
+            this.ColumnGradeWeight.HeaderText = "Weight";
+            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
+            this.ColumnGradeWeight.ReadOnly = true;
+            // 
+            // ColumnGradeTask
+            // 
+            this.ColumnGradeTask.HeaderText = "Task";
+            this.ColumnGradeTask.Name = "ColumnGradeTask";
+            this.ColumnGradeTask.ReadOnly = true;
+            // 
+            // ColumnGradeComment
+            // 
+            this.ColumnGradeComment.HeaderText = "Comment";
+            this.ColumnGradeComment.Name = "ColumnGradeComment";
+            this.ColumnGradeComment.ReadOnly = true;
+            // 
             // FrmMainTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,8 +422,8 @@
             this.TblAdministrateGradesMain.ResumeLayout(false);
             this.TblGradesAdministration.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridGradeInfo)).EndInit();
-            this.TblAddGrade.ResumeLayout(false);
-            this.TblAddGrade.PerformLayout();
+            this.TblModifyGrade.ResumeLayout(false);
+            this.TblModifyGrade.PerformLayout();
             this.TblOptionSelect.ResumeLayout(false);
             this.TblOptionSelect.PerformLayout();
             this.ResumeLayout(false);
@@ -430,13 +440,9 @@
         private System.Windows.Forms.ComboBox CmbClasses;
         private System.Windows.Forms.ComboBox CmbStudents;
         private System.Windows.Forms.TableLayoutPanel TblGradesAdministration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeTask;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeComment;
-        private System.Windows.Forms.TableLayoutPanel TblAddGrade;
+        private System.Windows.Forms.TableLayoutPanel TblModifyGrade;
         private System.Windows.Forms.Label LblValue;
-        private System.Windows.Forms.TextBox TextValue;
+        private System.Windows.Forms.TextBox TxtValue;
         private System.Windows.Forms.Label LblWeight;
         private System.Windows.Forms.TextBox TxtWeight;
         private System.Windows.Forms.TextBox TxtTask;
@@ -449,5 +455,10 @@
         private System.Windows.Forms.RadioButton RadEdit;
         private System.Windows.Forms.Button BtnOperation;
         private System.Windows.Forms.DataGridView GridGradeInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeTask;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeComment;
     }
 }

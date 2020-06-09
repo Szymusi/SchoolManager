@@ -1,6 +1,10 @@
-﻿using SchoolManager.Data.Enums;
+﻿using Ninject;
+using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
+using SchoolManager.Data.Repositories.Students;
+using SchoolManager.Data.Repositories.Teachers;
+using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
@@ -12,16 +16,27 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmMainStudent : Form
     {
+
         private readonly IUserService _userService = new UserService();
         private readonly IGradeService _gradeService = new GradeService();
 
         public FrmMainStudent(IUserService userService)
         {
+            Ninject();
+
             _userService = userService;
 
             InitializeComponent();
 
             Initialize();
+        }
+
+        private void Ninject()
+        {
+            IKernel kernel = new StandardKernel();
+            kernel.Bind<IUserRepository>().To<MockUserRepository>();
+            kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
+            kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
         }
 
         private void Initialize()
@@ -48,6 +63,7 @@ namespace SchoolManager.Desktop.Forms
 
             GridGrades_CellMouseClick(GridGrades, new DataGridViewCellMouseEventArgs(0, 0, 0, 0, new MouseEventArgs( MouseButtons.Left, 1, 0,0,0)));
         }
+
 
         private void GridGrades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

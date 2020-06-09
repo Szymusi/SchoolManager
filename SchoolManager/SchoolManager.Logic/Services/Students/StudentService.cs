@@ -7,6 +7,11 @@ namespace SchoolManager.Logic.Services.Students
 {
     public class StudentService : IStudentService
     {
-        private readonly IStudentRepository _studentRepository = new MockStudentRepository();
+        private readonly IStudentRepository _studentRepository;
+
+        public StudentService(IStudentRepository studentRepository)
+        {
+            _studentRepository = studentRepository;
+        }
     }
 }

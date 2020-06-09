@@ -10,16 +10,22 @@ namespace SchoolManager.Logic.Services.Users
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository = new MockUserRepository();
-        //private readonly IParentRepository _parentRepository = new M
-        private readonly ITeacherRepository _teacherRepository = new MockTeacherRepository();
-        private readonly IStudentRepository _studentRepository = new MockStudentRepository();
-
+        private readonly IUserRepository _userRepository;
+        private readonly ITeacherRepository _teacherRepository;
+        private readonly IStudentRepository _studentRepository;
         public User SignedInUser { get; set; }
+
+
+        public UserService(IUserRepository userRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository)
+        {
+            _userRepository = userRepository;
+            _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
+        }
 
         public bool SignIn(string email, string password)
         {
-            IEnumerable<User> users= _userRepository.GetUsers();
+            IEnumerable<User> users = _userRepository.GetUsers();
 
             var user = users.SingleOrDefault(u => u.Email == email && u.Password == password);
 
