@@ -1,4 +1,5 @@
-﻿using SchoolManager.Data.Models;
+﻿using Ninject;
+using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Data.Repositories.Classes;
 using SchoolManager.Data.Repositories.Students;
@@ -18,9 +19,7 @@ namespace SchoolManager.Desktop.Forms
         private readonly IClassRepository _classRepository = new MockClassRepository();
         private readonly ITeacherRepository _teacherRepository = new MockTeacherRepository();
         private readonly IStudentRepository _studentRpository = new MockStudentRepository();
-
         private readonly IComboBoxHelperService _comboBoxHelperService = new ComboBoxHelperService();
-
 
         public FrmMainTeacher(IUserService userService)
         {

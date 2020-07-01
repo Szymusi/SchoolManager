@@ -1,5 +1,6 @@
 ﻿using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
+using SchoolManager.Data.Repositories.Parents;
 using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
@@ -10,10 +11,18 @@ namespace SchoolManager.Logic.Services.Users
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository = new MockUserRepository();
-        //private readonly IParentRepository _parentRepository = new M
-        private readonly ITeacherRepository _teacherRepository = new MockTeacherRepository();
-        private readonly IStudentRepository _studentRepository = new MockStudentRepository();
+        private readonly IUserRepository _userRepository;
+        private readonly IParentRepository _parentRepository;
+        private readonly ITeacherRepository _teacherRepository;
+        private readonly IStudentRepository _studentRepository;
+
+        public UserService(IUserRepository userRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository)
+        {
+            _userRepository = userRepository;
+            _parentRepository = parentRepository;
+            _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
+        }
 
         public User SignedInUser { get; set; }
 

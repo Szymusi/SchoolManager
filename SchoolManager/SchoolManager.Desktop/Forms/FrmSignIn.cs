@@ -1,5 +1,10 @@
-﻿using SchoolManager.Data.Enums;
-using SchoolManager.Data.Models;
+﻿using Ninject;
+using SchoolManager.Data.Enums;
+using SchoolManager.Data.Repositories.Classes;
+using SchoolManager.Data.Repositories.Parents;
+using SchoolManager.Data.Repositories.Students;
+using SchoolManager.Data.Repositories.Teachers;
+using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Windows.Forms;
@@ -8,7 +13,20 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmSignIn : Form
     {
-        private readonly IUserService _userService = new UserService();
+        private readonly IUserService _userService;
+
+        public static void NinjectID()
+        {
+            IKernel kernel = new StandardKernel();
+            kernel.Bind<IClassRepository>().To<MockClassRepository>();
+            kernel.Bind<IParentRepository>().To<MockParentRepository>();
+            kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
+            kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
+            kernel.Bind<IUserRepository>().To<MockUserRepository>();
+            kernel.Bind<IUserService>().To<UserService>();
+
+            _userService = kernel.Get<IUserService>;
+        }
 
         public FrmSignIn()
         {
