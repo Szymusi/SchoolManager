@@ -1,6 +1,11 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
+using SchoolManager.Data.Repositories.Classes;
+using SchoolManager.Data.Repositories.Parents;
+using SchoolManager.Data.Repositories.Students;
+using SchoolManager.Data.Repositories.Teachers;
+using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
@@ -12,12 +17,22 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmMainStudent : Form
     {
-        private readonly IUserService _userService = new UserService();
+        private readonly IUserService _userService;
+        private readonly IUserRepository _userRepository;
+        private readonly IParentRepository _parentRepository;
+        private readonly ITeacherRepository _teacherRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IClassRepository _classRepository;
         private readonly IGradeService _gradeService = new GradeService();
 
-        public FrmMainStudent(IUserService userService)
+        public FrmMainStudent(IUserService userService, IUserRepository userRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository, IClassRepository classRepository)
         {
             _userService = userService;
+            _userRepository = userRepository;
+            _parentRepository = parentRepository;
+            _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
+            _classRepository = classRepository;
 
             InitializeComponent();
 

@@ -1,5 +1,4 @@
-﻿using Ninject;
-using SchoolManager.Data.Enums;
+﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Repositories.Classes;
 using SchoolManager.Data.Repositories.Parents;
 using SchoolManager.Data.Repositories.Students;
@@ -13,24 +12,23 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmSignIn : Form
     {
+        private readonly IUserRepository _userRepository;
+        private readonly IParentRepository _parentRepository;
+        private readonly ITeacherRepository _teacherRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IClassRepository _classRepository;
         private readonly IUserService _userService;
 
-        public static void NinjectID()
-        {
-            IKernel kernel = new StandardKernel();
-            kernel.Bind<IClassRepository>().To<MockClassRepository>();
-            kernel.Bind<IParentRepository>().To<MockParentRepository>();
-            kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
-            kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
-            kernel.Bind<IUserRepository>().To<MockUserRepository>();
-            kernel.Bind<IUserService>().To<UserService>();
 
-            _userService = kernel.Get<IUserService>;
-        }
-
-        public FrmSignIn()
+        public FrmSignIn(IUserService userService, IClassRepository classRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository, IUserRepository userRepository, IStudentRepository studentRepository)
         {
             InitializeComponent();
+            _userService = userService;
+            _userRepository = userRepository;
+            _parentRepository = parentRepository;
+            _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
+            _classRepository = classRepository;
         }
 
         private void BtnSignIn_MouseClick(object sender, MouseEventArgs e)
@@ -48,10 +46,10 @@ namespace SchoolManager.Desktop.Forms
                     frmMain = new FrmMainParent(_userService);
                     break;
                 case AccountTypes.Student:
-                    frmMain = new FrmMainStudent(_userService);
+                    frmMain = new FrmMainStudent(_userService,_userRepository,_parentRepository,_teacherRepository,_studentRepository,_classRepository);
                     break;
                 case AccountTypes.Teacher:
-                    frmMain = new FrmMainTeacher(_userService);
+                    frmMain = new FrmMainTeacher(_userService, _userRepository, _parentRepository, _teacherRepository, _studentRepository, _classRepository);
                     break;
             }
 
