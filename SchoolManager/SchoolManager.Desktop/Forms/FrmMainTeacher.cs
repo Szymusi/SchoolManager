@@ -91,7 +91,15 @@ namespace SchoolManager.Desktop.Forms
 
         private void GridGradeInfo_SelectionChanged(object sender, EventArgs e)
         {
-            
+            var selectedRow = GridGradeInfo.SelectedRows[0];
+            int selectedGradeId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            IEnumerable<Student> students = _studentRepository.GetStudents();
+            Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
+            IEnumerable<Grade> selectedStudentGrades = selectedStudent.Grades;
+            Grade selectedGrade = selectedStudentGrades.Single(g => g.Id == selectedGradeId);
+
+            _gradesTabService.FillTxtGradeInfo(selectedGrade, TxtValue, TxtWeight, TxtTask, TxtComment);
+            RadEdit.Checked = true;
         }
     }
 }

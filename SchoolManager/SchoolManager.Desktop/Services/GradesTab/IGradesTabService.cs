@@ -7,5 +7,7 @@ namespace SchoolManager.Desktop.Services.GradesTab
     public interface IGradesTabService
     {
         void FillGradeTxtBoxInfo(DataGridView grid, IEnumerable<Grade> grades);
+        void FillTxtGradeInfo(Grade grade, TextBox txtValue, TextBox txtWeight, TextBox txtTask, TextBox txtComment);
+
     }
 }

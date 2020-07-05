@@ -17,9 +17,12 @@ namespace SchoolManager.Desktop.Services.GradesTab
 
         }
 
-        public void FillTxtGradeInfo(Grade grade)
+        public void FillTxtGradeInfo(Grade grade, TextBox txtValue, TextBox txtWeight, TextBox txtTask, TextBox txtComment)
         {
-            
+            txtValue.Text = grade.Value.ToString();
+            txtWeight.Text = grade.Weight.ToString();
+            txtTask.Text = grade.Task;
+            txtComment.Text = grade.Comment;
         }
     }
 }
