@@ -1,10 +1,5 @@
 ﻿using Ninject;
 using SchoolManager.Data.Enums;
-using SchoolManager.Data.Repositories.Classes;
-using SchoolManager.Data.Repositories.Parents;
-using SchoolManager.Data.Repositories.Students;
-using SchoolManager.Data.Repositories.Teachers;
-using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Windows.Forms;

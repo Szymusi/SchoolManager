@@ -6,6 +6,7 @@ using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Forms;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
+using SchoolManager.Desktop.Services.GradesTab;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
@@ -28,6 +29,7 @@ namespace SchoolManager.Desktop
             kernel.Bind<IUserService>().To<UserService>().InSingletonScope();
             kernel.Bind<IComboBoxHelperService>().To<ComboBoxHelperService>();
             kernel.Bind<IGradeService>().To<GradeService>();
+            kernel.Bind<IGradesTabService>().To<GradesTabService>();
             kernel.Bind<FrmMainParent>().ToSelf();
             kernel.Bind<FrmMainStudent>().ToSelf();
             kernel.Bind<FrmMainTeacher>().ToSelf();

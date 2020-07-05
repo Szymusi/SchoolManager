@@ -1,5 +1,4 @@
-﻿using Ninject;
-using SchoolManager.Data.Models;
+﻿using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Data.Repositories.Classes;
 using SchoolManager.Data.Repositories.Parents;
@@ -7,6 +6,7 @@ using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
+using SchoolManager.Desktop.Services.GradesTab;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
@@ -26,6 +26,7 @@ namespace SchoolManager.Desktop.Forms
         private readonly IClassRepository _classRepository;
         private readonly IGradeService _gradeService;
         private readonly IComboBoxHelperService _comboBoxHelperService;
+        private readonly IGradesTabService _gradesTabService;
 
         public FrmMainTeacher(
             IGradeService gradeService, 
@@ -35,7 +36,8 @@ namespace SchoolManager.Desktop.Forms
             IParentRepository parentRepository, 
             ITeacherRepository teacherRepository, 
             IStudentRepository studentRepository, 
-            IClassRepository classRepository)
+            IClassRepository classRepository,
+            IGradesTabService gradesTabService)
         {
             _comboBoxHelperService = comboBoxHelperService;
             _userService = userService;
@@ -44,6 +46,7 @@ namespace SchoolManager.Desktop.Forms
             _teacherRepository = teacherRepository;
             _studentRepository = studentRepository;
             _classRepository = classRepository;
+            _gradesTabService = gradesTabService;
 
             InitializeComponent();
 
