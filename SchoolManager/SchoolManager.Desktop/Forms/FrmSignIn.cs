@@ -1,4 +1,5 @@
-﻿using SchoolManager.Data.Enums;
+﻿using Ninject;
+using SchoolManager.Data.Enums;
 using SchoolManager.Data.Repositories.Classes;
 using SchoolManager.Data.Repositories.Parents;
 using SchoolManager.Data.Repositories.Students;
@@ -12,23 +13,16 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmSignIn : Form
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IParentRepository _parentRepository;
-        private readonly ITeacherRepository _teacherRepository;
-        private readonly IStudentRepository _studentRepository;
-        private readonly IClassRepository _classRepository;
         private readonly IUserService _userService;
+        private readonly IKernel _kernel;
 
-
-        public FrmSignIn(IUserService userService, IClassRepository classRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository, IUserRepository userRepository, IStudentRepository studentRepository)
+        public FrmSignIn(
+            IUserService userService,
+            IKernel kernel)
         {
-            InitializeComponent();
             _userService = userService;
-            _userRepository = userRepository;
-            _parentRepository = parentRepository;
-            _teacherRepository = teacherRepository;
-            _studentRepository = studentRepository;
-            _classRepository = classRepository;
+            _kernel = kernel;
+            InitializeComponent();
         }
 
         private void BtnSignIn_MouseClick(object sender, MouseEventArgs e)
@@ -43,13 +37,13 @@ namespace SchoolManager.Desktop.Forms
             switch (_userService.SignedInUser.AccountType)
             {
                 case AccountTypes.Parent:
-                    frmMain = new FrmMainParent(_userService);
+                    frmMain = _kernel.Get<FrmMainParent>();
                     break;
                 case AccountTypes.Student:
-                    frmMain = new FrmMainStudent(_userService,_userRepository,_parentRepository,_teacherRepository,_studentRepository,_classRepository);
+                    frmMain = _kernel.Get<FrmMainStudent>();
                     break;
                 case AccountTypes.Teacher:
-                    frmMain = new FrmMainTeacher(_userService, _userRepository, _parentRepository, _teacherRepository, _studentRepository, _classRepository);
+                    frmMain = _kernel.Get<FrmMainTeacher>();
                     break;
             }
 

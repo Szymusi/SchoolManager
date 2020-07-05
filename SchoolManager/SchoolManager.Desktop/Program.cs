@@ -5,6 +5,8 @@ using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Forms;
+using SchoolManager.Desktop.Services.ComboBoxHelper;
+using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Windows.Forms;
@@ -23,18 +25,21 @@ namespace SchoolManager.Desktop
             kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
             kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
             kernel.Bind<IUserRepository>().To<MockUserRepository>();
-            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IUserService>().To<UserService>().InSingletonScope();
+            kernel.Bind<IComboBoxHelperService>().To<ComboBoxHelperService>();
+            kernel.Bind<IGradeService>().To<GradeService>();
+            kernel.Bind<FrmMainParent>().ToSelf();
+            kernel.Bind<FrmMainStudent>().ToSelf();
+            kernel.Bind<FrmMainTeacher>().ToSelf();
+            kernel.Bind<FrmSignIn>().ToSelf();
 
-            var _userService = kernel.Get<IUserService>();
-            var _userRepository = kernel.Get<IUserRepository>();
-            var _parentRepository = kernel.Get<IParentRepository>();
-            var _teacherRepository = kernel.Get<ITeacherRepository>();
-            var _studentRepository = kernel.Get<IStudentRepository>();
-            var _classRepository = kernel.Get<IClassRepository>();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var formSignIn = kernel.Get<FrmSignIn>();
 
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSignIn(_userService, _classRepository, _parentRepository, _teacherRepository, _userRepository, _studentRepository));
+            
+            Application.Run(formSignIn);
         }
     }
 }

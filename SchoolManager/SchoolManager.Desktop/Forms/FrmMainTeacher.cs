@@ -7,6 +7,7 @@ using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
+using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,26 @@ namespace SchoolManager.Desktop.Forms
 {
     public partial class FrmMainTeacher : Form
     {
+        private readonly IUserService _userService;
         private readonly IUserRepository _userRepository;
         private readonly IParentRepository _parentRepository;
         private readonly ITeacherRepository _teacherRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly IClassRepository _classRepository;
-        private readonly IUserService _userService;
-        private readonly IComboBoxHelperService _comboBoxHelperService = new ComboBoxHelperService();
+        private readonly IGradeService _gradeService;
+        private readonly IComboBoxHelperService _comboBoxHelperService;
 
-        public FrmMainTeacher(IUserService userService, IUserRepository userRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository, IStudentRepository studentRepository, IClassRepository classRepository)
+        public FrmMainTeacher(
+            IGradeService gradeService, 
+            IComboBoxHelperService comboBoxHelperService, 
+            IUserService userService, 
+            IUserRepository userRepository, 
+            IParentRepository parentRepository, 
+            ITeacherRepository teacherRepository, 
+            IStudentRepository studentRepository, 
+            IClassRepository classRepository)
         {
+            _comboBoxHelperService = comboBoxHelperService;
             _userService = userService;
             _userRepository = userRepository;
             _parentRepository = parentRepository;
