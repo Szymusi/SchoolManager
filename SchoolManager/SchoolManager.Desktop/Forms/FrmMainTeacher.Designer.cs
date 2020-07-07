@@ -38,6 +38,11 @@
             this.CmbStudents = new System.Windows.Forms.ComboBox();
             this.TblGradesAdministration = new System.Windows.Forms.TableLayoutPanel();
             this.GridGradeInfo = new System.Windows.Forms.DataGridView();
+            this.ColumnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblModifyGrade = new System.Windows.Forms.TableLayoutPanel();
             this.LblComment = new System.Windows.Forms.Label();
             this.LblTask = new System.Windows.Forms.Label();
@@ -52,11 +57,6 @@
             this.RadAdd = new System.Windows.Forms.RadioButton();
             this.RadEdit = new System.Windows.Forms.RadioButton();
             this.BtnOperation = new System.Windows.Forms.Button();
-            this.ColumnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblMain.SuspendLayout();
             this.TabMain.SuspendLayout();
             this.TabGradeAdministration.SuspendLayout();
@@ -205,6 +205,39 @@
             this.GridGradeInfo.Size = new System.Drawing.Size(458, 326);
             this.GridGradeInfo.TabIndex = 3;
             this.GridGradeInfo.SelectionChanged += new System.EventHandler(this.GridGradeInfo_SelectionChanged);
+            // 
+            // ColumnGradeId
+            // 
+            this.ColumnGradeId.HeaderText = "Id";
+            this.ColumnGradeId.Name = "ColumnGradeId";
+            this.ColumnGradeId.ReadOnly = true;
+            this.ColumnGradeId.Visible = false;
+            // 
+            // ColumnGradeValue
+            // 
+            this.ColumnGradeValue.FillWeight = 30F;
+            this.ColumnGradeValue.HeaderText = "Grade";
+            this.ColumnGradeValue.Name = "ColumnGradeValue";
+            this.ColumnGradeValue.ReadOnly = true;
+            // 
+            // ColumnGradeWeight
+            // 
+            this.ColumnGradeWeight.FillWeight = 35F;
+            this.ColumnGradeWeight.HeaderText = "Weight";
+            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
+            this.ColumnGradeWeight.ReadOnly = true;
+            // 
+            // ColumnGradeTask
+            // 
+            this.ColumnGradeTask.HeaderText = "Task";
+            this.ColumnGradeTask.Name = "ColumnGradeTask";
+            this.ColumnGradeTask.ReadOnly = true;
+            // 
+            // ColumnGradeComment
+            // 
+            this.ColumnGradeComment.HeaderText = "Comment";
+            this.ColumnGradeComment.Name = "ColumnGradeComment";
+            this.ColumnGradeComment.ReadOnly = true;
             // 
             // TblModifyGrade
             // 
@@ -371,41 +404,8 @@
             this.BtnOperation.Name = "BtnOperation";
             this.BtnOperation.Size = new System.Drawing.Size(70, 20);
             this.BtnOperation.TabIndex = 3;
-            this.BtnOperation.Text = "DUPA";
+            this.BtnOperation.Text = "Zatwierdź";
             this.BtnOperation.UseVisualStyleBackColor = true;
-            // 
-            // ColumnGradeId
-            // 
-            this.ColumnGradeId.HeaderText = "Id";
-            this.ColumnGradeId.Name = "ColumnGradeId";
-            this.ColumnGradeId.ReadOnly = true;
-            this.ColumnGradeId.Visible = false;
-            // 
-            // ColumnGradeValue
-            // 
-            this.ColumnGradeValue.FillWeight = 30F;
-            this.ColumnGradeValue.HeaderText = "Grade";
-            this.ColumnGradeValue.Name = "ColumnGradeValue";
-            this.ColumnGradeValue.ReadOnly = true;
-            // 
-            // ColumnGradeWeight
-            // 
-            this.ColumnGradeWeight.FillWeight = 35F;
-            this.ColumnGradeWeight.HeaderText = "Weight";
-            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
-            this.ColumnGradeWeight.ReadOnly = true;
-            // 
-            // ColumnGradeTask
-            // 
-            this.ColumnGradeTask.HeaderText = "Task";
-            this.ColumnGradeTask.Name = "ColumnGradeTask";
-            this.ColumnGradeTask.ReadOnly = true;
-            // 
-            // ColumnGradeComment
-            // 
-            this.ColumnGradeComment.HeaderText = "Comment";
-            this.ColumnGradeComment.Name = "ColumnGradeComment";
-            this.ColumnGradeComment.ReadOnly = true;
             // 
             // FrmMainTeacher
             // 

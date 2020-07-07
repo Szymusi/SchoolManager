@@ -87,10 +87,16 @@ namespace SchoolManager.Desktop.Forms
             IEnumerable<Grade> selectedStudentGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion);
 
             _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentGrades);
+
         }
 
         private void GridGradeInfo_SelectionChanged(object sender, EventArgs e)
         {
+            if (GridGradeInfo.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
             var selectedRow = GridGradeInfo.SelectedRows[0];
             int selectedGradeId = Convert.ToInt32(selectedRow.Cells[0].Value);
             IEnumerable<Student> students = _studentRepository.GetStudents();
