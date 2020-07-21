@@ -1,5 +1,8 @@
-﻿using SchoolManager.Data.Models;
+﻿using SchoolManager.Data.Enums;
+using SchoolManager.Data.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SchoolManager.Desktop.Services.GradesTab
@@ -23,6 +26,19 @@ namespace SchoolManager.Desktop.Services.GradesTab
             txtWeight.Text = grade.Weight.ToString();
             txtTask.Text = grade.Task;
             txtComment.Text = grade.Comment;
+        }
+
+        public Grade SelectedGrade(IEnumerable<Grade> grades, DataGridView dataGrid)
+        {
+            if (dataGrid.SelectedRows.Count == 0)
+            {
+                return null;
+            }
+            var selectedRow = dataGrid.SelectedRows[0];
+            int selectedGradeId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            Grade selectedGrade = grades.Single(g => g.Id == selectedGradeId);
+
+            return selectedGrade;
         }
     }
 }

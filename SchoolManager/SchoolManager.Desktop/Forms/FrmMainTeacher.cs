@@ -84,9 +84,9 @@ namespace SchoolManager.Desktop.Forms
             IEnumerable<Student> students = _studentRepository.GetStudents();
 
             Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
-            IEnumerable<Grade> selectedStudentGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion);
+            IEnumerable<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion);
 
-            _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentGrades);
+            _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
 
         }
 
@@ -142,41 +142,42 @@ namespace SchoolManager.Desktop.Forms
 
         private void BtnOperation_Click(object sender, EventArgs e)
         {
-            var selectedRow = GridGradeInfo.SelectedRows[0];
-            int selectedGradeId = Convert.ToInt32(selectedRow.Cells[0].Value);
-
             IEnumerable<Student> students = _studentRepository.GetStudents();
             Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
             List<Grade> selectedStudentAllGrades = selectedStudent.Grades;
             Teacher teacher = _userService.GetSpecificUserType<Teacher>(_userService.SignedInUser);
             List<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion).ToList();
-            Grade selectedGrade = selectedStudentAllGrades.Single(g => g.Id == selectedGradeId);
+
+
 
             if (RadAdd.Checked == true)
             {
-                Grade grade = new Grade();
-
-                int gradeId = selectedStudentAllGrades.Last<Grade>().Id + 1;
+                int gradeId = selectedStudentAllGrades.Max(g => g.Id) + 1;
                 var gradeSubject = teacher.Profesion;
                 double gradeValue = Convert.ToDouble(TxtValue.Text);
                 int gradeWeight = Convert.ToInt32(TxtWeight.Text);
                 string gradeTask = TxtTask.Text.ToString();
                 string gradeComment = TxtComment.Text.ToString();
 
-                grade.Id = gradeId;
-                grade.SchoolSubject = gradeSubject;
-                grade.Value = gradeValue;
-                grade.Weight = gradeWeight;
-                grade.Task = gradeTask;
-                grade.Comment = gradeComment;
+                Grade grade = new Grade
+                {
+                    Id = gradeId,
+                    SchoolSubject = gradeSubject,
+                    Value = gradeValue,
+                    Weight = gradeWeight,
+                    Task = gradeTask,
+                    Comment = gradeComment
+                };
 
-                selectedStudentSubjectGrades.Add(grade);
+                selectedStudentAllGrades.Add(grade);
 
                 _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
             }
 
             if (RadDelete.Checked == true)
             {
+                Grade selectedGrade = _gradesTabService.SelectedGrade(selectedStudentAllGrades, GridGradeInfo);
+
                 selectedStudentAllGrades.Remove(selectedGrade);
 
                 _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
@@ -184,7 +185,7 @@ namespace SchoolManager.Desktop.Forms
 
             if(RadEdit.Checked == true)
             {
-                Grade grade = new Grade();
+                Grade selectedGrade = _gradesTabService.SelectedGrade(selectedStudentAllGrades, GridGradeInfo);
 
                 int gradeId = selectedGrade.Id;
                 var gradeSubject = teacher.Profesion;
@@ -193,12 +194,15 @@ namespace SchoolManager.Desktop.Forms
                 string gradeTask = TxtTask.Text.ToString();
                 string gradeComment = TxtComment.Text.ToString();
 
-                grade.Id = gradeId;
-                grade.SchoolSubject = gradeSubject;
-                grade.Value = gradeValue;
-                grade.Weight = gradeWeight;
-                grade.Task = gradeTask;
-                grade.Comment = gradeComment;
+                Grade grade = new Grade
+                {
+                    Id = gradeId,
+                    SchoolSubject = gradeSubject,
+                    Value = gradeValue,
+                    Weight = gradeWeight,
+                    Task = gradeTask,
+                    Comment = gradeComment
+                };
 
                 selectedStudentAllGrades.Remove(selectedGrade);
                 selectedStudentAllGrades.Add(grade);
