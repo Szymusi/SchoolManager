@@ -8,6 +8,7 @@ using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
 using SchoolManager.Desktop.Services.GradesTab;
 using SchoolManager.Logic.Services.Grades;
+using SchoolManager.Logic.Services.Teachers;
 using SchoolManager.Logic.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace SchoolManager.Desktop.Forms
         private readonly IGradeService _gradeService;
         private readonly IComboBoxHelperService _comboBoxHelperService;
         private readonly IGradesTabService _gradesTabService;
+        private readonly ITeacherService _teacherService;
 
         public FrmMainTeacher(
             IGradeService gradeService, 
@@ -37,7 +39,8 @@ namespace SchoolManager.Desktop.Forms
             ITeacherRepository teacherRepository, 
             IStudentRepository studentRepository, 
             IClassRepository classRepository,
-            IGradesTabService gradesTabService)
+            IGradesTabService gradesTabService,
+            ITeacherService teacherService)
         {
             _comboBoxHelperService = comboBoxHelperService;
             _userService = userService;
@@ -47,6 +50,7 @@ namespace SchoolManager.Desktop.Forms
             _studentRepository = studentRepository;
             _classRepository = classRepository;
             _gradesTabService = gradesTabService;
+            _teacherService = teacherService;
 
             InitializeComponent();
 
@@ -146,9 +150,6 @@ namespace SchoolManager.Desktop.Forms
             Student selectedStudent = _comboBoxHelperService.GetSelectedElement(CmbStudents, students, s => $"{s.User.Name} {s.User.Surname}");
             List<Grade> selectedStudentAllGrades = selectedStudent.Grades;
             Teacher teacher = _userService.GetSpecificUserType<Teacher>(_userService.SignedInUser);
-            List<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion).ToList();
-
-
 
             if (RadAdd.Checked == true)
             {
@@ -169,7 +170,9 @@ namespace SchoolManager.Desktop.Forms
                     Comment = gradeComment
                 };
 
-                selectedStudentAllGrades.Add(grade);
+                _teacherService.AddGrade(selectedStudentAllGrades, grade);
+
+                List<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion).ToList();
 
                 _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
             }
@@ -178,7 +181,9 @@ namespace SchoolManager.Desktop.Forms
             {
                 Grade selectedGrade = _gradesTabService.SelectedGrade(selectedStudentAllGrades, GridGradeInfo);
 
-                selectedStudentAllGrades.Remove(selectedGrade);
+                _teacherService.DeleteGrade(selectedStudentAllGrades, selectedGrade);
+
+                List<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion).ToList();
 
                 _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
             }
@@ -204,8 +209,9 @@ namespace SchoolManager.Desktop.Forms
                     Comment = gradeComment
                 };
 
-                selectedStudentAllGrades.Remove(selectedGrade);
-                selectedStudentAllGrades.Add(grade);
+                _teacherService.EditGrade(selectedStudentAllGrades, selectedGrade, grade);
+
+                List<Grade> selectedStudentSubjectGrades = selectedStudent.Grades.Where(g => g.SchoolSubject == teacher.Profesion).ToList();
 
                 _gradesTabService.FillGradeTxtBoxInfo(GridGradeInfo, selectedStudentSubjectGrades);
             }
