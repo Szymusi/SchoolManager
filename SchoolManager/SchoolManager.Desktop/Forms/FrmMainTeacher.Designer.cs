@@ -57,6 +57,8 @@
             this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabMessages = new System.Windows.Forms.TabPage();
+            this.TblMessagesMain = new System.Windows.Forms.TableLayoutPanel();
             this.TblMain.SuspendLayout();
             this.TabMain.SuspendLayout();
             this.TabGradeAdministration.SuspendLayout();
@@ -65,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridGradeInfo)).BeginInit();
             this.TblModifyGrade.SuspendLayout();
             this.TblOptionSelect.SuspendLayout();
+            this.TabMessages.SuspendLayout();
             this.SuspendLayout();
             // 
             // TblMain
@@ -98,6 +101,7 @@
             // 
             this.TblMain.SetColumnSpan(this.TabMain, 2);
             this.TabMain.Controls.Add(this.TabGradeAdministration);
+            this.TabMain.Controls.Add(this.TabMessages);
             this.TabMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabMain.Location = new System.Drawing.Point(3, 3);
             this.TabMain.Name = "TabMain";
@@ -409,6 +413,31 @@
             this.ColumnGradeComment.Name = "ColumnGradeComment";
             this.ColumnGradeComment.ReadOnly = true;
             // 
+            // TabMessages
+            // 
+            this.TabMessages.Controls.Add(this.TblMessagesMain);
+            this.TabMessages.Location = new System.Drawing.Point(4, 22);
+            this.TabMessages.Name = "TabMessages";
+            this.TabMessages.Padding = new System.Windows.Forms.Padding(3);
+            this.TabMessages.Size = new System.Drawing.Size(786, 373);
+            this.TabMessages.TabIndex = 1;
+            this.TabMessages.Text = "Messages";
+            this.TabMessages.UseVisualStyleBackColor = true;
+            // 
+            // TblMessagesMain
+            // 
+            this.TblMessagesMain.ColumnCount = 2;
+            this.TblMessagesMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMessagesMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMessagesMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TblMessagesMain.Location = new System.Drawing.Point(3, 3);
+            this.TblMessagesMain.Name = "TblMessagesMain";
+            this.TblMessagesMain.RowCount = 2;
+            this.TblMessagesMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMessagesMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TblMessagesMain.Size = new System.Drawing.Size(780, 367);
+            this.TblMessagesMain.TabIndex = 0;
+            // 
             // FrmMainTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +457,7 @@
             this.TblModifyGrade.PerformLayout();
             this.TblOptionSelect.ResumeLayout(false);
             this.TblOptionSelect.PerformLayout();
+            this.TabMessages.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -462,5 +492,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeWeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeTask;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeComment;
+        private System.Windows.Forms.TabPage TabMessages;
+        private System.Windows.Forms.TableLayoutPanel TblMessagesMain;
     }
 }
