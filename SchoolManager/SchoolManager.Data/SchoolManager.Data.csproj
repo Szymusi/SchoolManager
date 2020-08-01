@@ -48,6 +48,7 @@
     <Compile Include="Enums\SchoolSubjects.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\UserTypes\IUser.cs" />
     <Compile Include="Models\UserTypes\Parent.cs" />
     <Compile Include="Models\UserTypes\Student.cs" />
