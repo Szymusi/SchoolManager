@@ -18,6 +18,7 @@ namespace SchoolManager.Data.Models
         public Class()
         {
             Students = new List<Student>();
+            Teachers = new List<Teacher>();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace SchoolManager.Data.Repositories.Teachers
 {
     public class MockTeacherRepository : ITeacherRepository
     {
-        private readonly List<Teacher> _teachers = new List<Teacher>
-        {
+        private readonly IEnumerable<Teacher> _teachers = MockContext.Teachers;
+/*        {
             new Teacher
             {
                 User = new User
@@ -126,7 +126,7 @@ namespace SchoolManager.Data.Repositories.Teachers
                 },
                 Profesion = SchoolSubjects.English
             },
-        };
+        };*/
 
         public IEnumerable<Teacher> GetTeachers()
         {

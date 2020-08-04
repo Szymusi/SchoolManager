@@ -9,18 +9,7 @@ namespace SchoolManager.Data.Repositories.Messages
 {
     class MockMessageRepository : IMessageRepository
     {
-        private readonly List<Message> _messages = new List<Message>
-        {
-  /*          new Message
-            {
-                Id = 1,
-                Title = "First mail",
-                Sender = ,
-                Receiver =,
-                Content = ,
-                Deleted = 
-            }*/
-        };
+        private readonly List<Message> _messages = MockContext.Messages;
 
         public IEnumerable<Message> GetMessages()
         {

@@ -6,8 +6,8 @@ namespace SchoolManager.Data.Repositories.Users
 {
     public class MockUserRepository : IUserRepository
     {
-        private readonly List<User> _users = new List<User>
-        {
+        private readonly IEnumerable<User> _users = MockContext.Users;
+/*        {
             new User
             {
                 Id = 1,
@@ -44,7 +44,7 @@ namespace SchoolManager.Data.Repositories.Users
                 Password = "123",
                 AccountType = AccountTypes.Student
             },
-           new User
+            new User
             {
                 Id = 5,
                 Name = "Piotr",
@@ -134,7 +134,7 @@ namespace SchoolManager.Data.Repositories.Users
                 Password = "1234",
                 AccountType = AccountTypes.Teacher
             },
-        };
+        };*/
 
         public IEnumerable<User> GetUsers()
         {

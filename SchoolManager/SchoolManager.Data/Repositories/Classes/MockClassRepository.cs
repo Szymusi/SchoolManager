@@ -1,14 +1,15 @@
 ﻿using SchoolManager.Data.Enums;
 using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
+using SchoolManager.Data.Repositories.Context;
 using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Classes
 {
     public class MockClassRepository : IClassRepository
     {
-        private readonly List<Class> _classes = new List<Class>
-        {
+        private readonly IEnumerable<Class> _classes = MockContext.Classes;
+/*        {
             new Class
             {
                 Name = "1a",
@@ -1502,7 +1503,7 @@ namespace SchoolManager.Data.Repositories.Classes
                     },
                 }
             },
-        };
+        };*/
 
         public IEnumerable<Class> GetClasses()
         {
