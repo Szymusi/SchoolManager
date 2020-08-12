@@ -60,7 +60,7 @@
     <Compile Include="Repositories\Classes\IClassRepository.cs" />
     <Compile Include="Repositories\Classes\MockClassRepository.cs" />
     <Compile Include="Repositories\Messages\IMessageRepository.cs" />
-    <Compile Include="Repositories\Messages\MockMessageRepository.cs" />
+    <Compile Include="Repositories\Messages\MockMessaegRepoeitory.cs" />
     <Compile Include="Repositories\Parents\IParentRepository.cs" />
     <Compile Include="Repositories\Parents\MockParentRepository.cs" />
     <Compile Include="Repositories\Students\IStudentRepository.cs" />

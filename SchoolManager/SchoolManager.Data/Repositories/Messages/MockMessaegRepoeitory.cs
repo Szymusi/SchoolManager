@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Data.Repositories.Messages
 {
-    class MockMessageRepository : IMessageRepository
+    public class MockMessaegRepoeitory : IMessageRepository
     {
-        private readonly List<Message> _messages = MockContext.Messages;
+        private readonly IEnumerable<Message> _messages = MockContext.Messages;
 
         public IEnumerable<Message> GetMessages()
         {

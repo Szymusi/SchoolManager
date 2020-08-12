@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SchoolManager.Data.Repositories.Messages
 {
-    interface IMessageRepository
+    public interface IMessageRepository
     {
         IEnumerable<Message> GetMessages();
     }

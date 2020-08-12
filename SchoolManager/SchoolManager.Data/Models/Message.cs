@@ -1,6 +1,8 @@
-﻿namespace SchoolManager.Data.Models
+﻿using System.Collections.Generic;
+
+namespace SchoolManager.Data.Models
 {
-    class Message
+    public class Message
     {
         public int Id { get; set; }
 
@@ -8,7 +10,7 @@
 
         public User Sender { get; set; }
 
-        public User Receiver { get; set; }
+        public List<User> Receivers { get; set; }
 
         public string Content { get; set; }
 
