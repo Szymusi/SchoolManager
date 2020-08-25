@@ -1,12 +1,14 @@
 ﻿using SchoolManager.Data.Models;
 using SchoolManager.Data.Models.UserTypes;
 using SchoolManager.Data.Repositories.Classes;
+using SchoolManager.Data.Repositories.Messages;
 using SchoolManager.Data.Repositories.Parents;
 using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
 using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
 using SchoolManager.Desktop.Services.GradesTab;
+using SchoolManager.Desktop.Services.MessagesTab;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Teachers;
 using SchoolManager.Logic.Services.Users;
@@ -14,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Message = SchoolManager.Data.Models.Message;
 
 namespace SchoolManager.Desktop.Forms
 {
@@ -24,11 +27,13 @@ namespace SchoolManager.Desktop.Forms
         private readonly IParentRepository _parentRepository;
         private readonly ITeacherRepository _teacherRepository;
         private readonly IStudentRepository _studentRepository;
+        private readonly IMessageRepository _messageRepository;
         private readonly IClassRepository _classRepository;
         private readonly IGradeService _gradeService;
         private readonly IComboBoxHelperService _comboBoxHelperService;
         private readonly IGradesTabService _gradesTabService;
         private readonly ITeacherService _teacherService;
+        private readonly IMessagesTabService _messagesTabService;
 
         public FrmMainTeacher(
             IGradeService gradeService, 
@@ -38,9 +43,11 @@ namespace SchoolManager.Desktop.Forms
             IParentRepository parentRepository, 
             ITeacherRepository teacherRepository, 
             IStudentRepository studentRepository, 
+            IMessageRepository messageRepository,
             IClassRepository classRepository,
             IGradesTabService gradesTabService,
-            ITeacherService teacherService)
+            ITeacherService teacherService,
+            IMessagesTabService messagesTabService)
         {
             _comboBoxHelperService = comboBoxHelperService;
             _userService = userService;
@@ -48,9 +55,11 @@ namespace SchoolManager.Desktop.Forms
             _parentRepository = parentRepository;
             _teacherRepository = teacherRepository;
             _studentRepository = studentRepository;
+            _messageRepository = messageRepository;
             _classRepository = classRepository;
             _gradesTabService = gradesTabService;
             _teacherService = teacherService;
+            _messagesTabService = messagesTabService;
 
             InitializeComponent();
 
@@ -62,8 +71,11 @@ namespace SchoolManager.Desktop.Forms
             Teacher teacher = _userService.GetSpecificUserType<Teacher>(_userService.SignedInUser);
             IEnumerable<Class> classes = _classRepository.GetClasses();
             IEnumerable<Class> teachersClasses = classes.Where(c => c.Teachers.Contains(teacher));
+            IEnumerable<Message> messages = _messageRepository.GetMessages();
+            IEnumerable<Message> usersMessages = messages.Where(m => m.Receivers.Contains(_userService.SignedInUser));
 
             _comboBoxHelperService.AddElementsToComboBox(CmbClasses, classes, c => c.Name);
+            _messagesTabService.FillGridMessageList(GridMessagesList, usersMessages);
 
             string signedInUserInfo = $"Name:{_userService.SignedInUser.Name} {_userService.SignedInUser.Surname}   Role: {_userService.SignedInUser.AccountType} ";
 

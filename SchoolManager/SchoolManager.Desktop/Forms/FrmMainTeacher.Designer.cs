@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TblMain = new System.Windows.Forms.TableLayoutPanel();
             this.LblAccountInfo = new System.Windows.Forms.Label();
             this.TabMain = new System.Windows.Forms.TabControl();
@@ -38,11 +38,6 @@
             this.CmbStudents = new System.Windows.Forms.ComboBox();
             this.TblGradesAdministration = new System.Windows.Forms.TableLayoutPanel();
             this.GridGradeInfo = new System.Windows.Forms.DataGridView();
-            this.ColumnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblModifyGrade = new System.Windows.Forms.TableLayoutPanel();
             this.LblComment = new System.Windows.Forms.Label();
             this.LblTask = new System.Windows.Forms.Label();
@@ -62,11 +57,19 @@
             this.BtnMessageDeleted = new System.Windows.Forms.Button();
             this.BtnMessageSent = new System.Windows.Forms.Button();
             this.BtnMessageRecived = new System.Windows.Forms.Button();
-            this.GridMessagesList = new System.Windows.Forms.DataGridView();
             this.BtnNewMail = new System.Windows.Forms.Button();
             this.LblMessageSender = new System.Windows.Forms.Label();
             this.LblMessageSubject = new System.Windows.Forms.Label();
             this.LblMessageContent = new System.Windows.Forms.Label();
+            this.ColumnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGradeComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GridMessagesList = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TblMain.SuspendLayout();
             this.TabMain.SuspendLayout();
             this.TabGradeAdministration.SuspendLayout();
@@ -194,14 +197,14 @@
             this.GridGradeInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridGradeInfo.BackgroundColor = System.Drawing.Color.White;
             this.GridGradeInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridGradeInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridGradeInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.GridGradeInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnGradeId,
             this.ColumnGradeValue,
@@ -219,38 +222,6 @@
             this.GridGradeInfo.Size = new System.Drawing.Size(458, 326);
             this.GridGradeInfo.TabIndex = 3;
             this.GridGradeInfo.SelectionChanged += new System.EventHandler(this.GridGradeInfo_SelectionChanged);
-            // 
-            // ColumnGradeId
-            // 
-            this.ColumnGradeId.HeaderText = "Id";
-            this.ColumnGradeId.Name = "ColumnGradeId";
-            this.ColumnGradeId.ReadOnly = true;
-            // 
-            // ColumnGradeValue
-            // 
-            this.ColumnGradeValue.FillWeight = 30F;
-            this.ColumnGradeValue.HeaderText = "Grade";
-            this.ColumnGradeValue.Name = "ColumnGradeValue";
-            this.ColumnGradeValue.ReadOnly = true;
-            // 
-            // ColumnGradeWeight
-            // 
-            this.ColumnGradeWeight.FillWeight = 35F;
-            this.ColumnGradeWeight.HeaderText = "Weight";
-            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
-            this.ColumnGradeWeight.ReadOnly = true;
-            // 
-            // ColumnGradeTask
-            // 
-            this.ColumnGradeTask.HeaderText = "Task";
-            this.ColumnGradeTask.Name = "ColumnGradeTask";
-            this.ColumnGradeTask.ReadOnly = true;
-            // 
-            // ColumnGradeComment
-            // 
-            this.ColumnGradeComment.HeaderText = "Comment";
-            this.ColumnGradeComment.Name = "ColumnGradeComment";
-            this.ColumnGradeComment.ReadOnly = true;
             // 
             // TblModifyGrade
             // 
@@ -445,11 +416,11 @@
             this.TblMessagesMain.Controls.Add(this.BtnMessageDeleted, 2, 0);
             this.TblMessagesMain.Controls.Add(this.BtnMessageSent, 1, 0);
             this.TblMessagesMain.Controls.Add(this.BtnMessageRecived, 0, 0);
-            this.TblMessagesMain.Controls.Add(this.GridMessagesList, 0, 1);
             this.TblMessagesMain.Controls.Add(this.BtnNewMail, 3, 0);
             this.TblMessagesMain.Controls.Add(this.LblMessageSender, 3, 1);
             this.TblMessagesMain.Controls.Add(this.LblMessageSubject, 3, 2);
             this.TblMessagesMain.Controls.Add(this.LblMessageContent, 3, 3);
+            this.TblMessagesMain.Controls.Add(this.GridMessagesList, 0, 1);
             this.TblMessagesMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TblMessagesMain.Location = new System.Drawing.Point(3, 3);
             this.TblMessagesMain.Name = "TblMessagesMain";
@@ -493,19 +464,6 @@
             this.BtnMessageRecived.TabIndex = 3;
             this.BtnMessageRecived.Text = "RECIVED";
             this.BtnMessageRecived.UseVisualStyleBackColor = true;
-            // 
-            // GridMessagesList
-            // 
-            this.GridMessagesList.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.GridMessagesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TblMessagesMain.SetColumnSpan(this.GridMessagesList, 3);
-            this.GridMessagesList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridMessagesList.Location = new System.Drawing.Point(0, 36);
-            this.GridMessagesList.Margin = new System.Windows.Forms.Padding(0);
-            this.GridMessagesList.Name = "GridMessagesList";
-            this.TblMessagesMain.SetRowSpan(this.GridMessagesList, 3);
-            this.GridMessagesList.Size = new System.Drawing.Size(234, 331);
-            this.GridMessagesList.TabIndex = 4;
             // 
             // BtnNewMail
             // 
@@ -551,6 +509,83 @@
             this.LblMessageContent.Name = "LblMessageContent";
             this.LblMessageContent.Size = new System.Drawing.Size(540, 261);
             this.LblMessageContent.TabIndex = 8;
+            // 
+            // ColumnGradeId
+            // 
+            this.ColumnGradeId.HeaderText = "Id";
+            this.ColumnGradeId.Name = "ColumnGradeId";
+            this.ColumnGradeId.ReadOnly = true;
+            this.ColumnGradeId.Visible = false;
+            // 
+            // ColumnGradeValue
+            // 
+            this.ColumnGradeValue.FillWeight = 30F;
+            this.ColumnGradeValue.HeaderText = "Grade";
+            this.ColumnGradeValue.Name = "ColumnGradeValue";
+            this.ColumnGradeValue.ReadOnly = true;
+            // 
+            // ColumnGradeWeight
+            // 
+            this.ColumnGradeWeight.FillWeight = 35F;
+            this.ColumnGradeWeight.HeaderText = "Weight";
+            this.ColumnGradeWeight.Name = "ColumnGradeWeight";
+            this.ColumnGradeWeight.ReadOnly = true;
+            // 
+            // ColumnGradeTask
+            // 
+            this.ColumnGradeTask.HeaderText = "Task";
+            this.ColumnGradeTask.Name = "ColumnGradeTask";
+            this.ColumnGradeTask.ReadOnly = true;
+            // 
+            // ColumnGradeComment
+            // 
+            this.ColumnGradeComment.HeaderText = "Comment";
+            this.ColumnGradeComment.Name = "ColumnGradeComment";
+            this.ColumnGradeComment.ReadOnly = true;
+            // 
+            // GridMessagesList
+            // 
+            this.GridMessagesList.AllowUserToAddRows = false;
+            this.GridMessagesList.AllowUserToDeleteRows = false;
+            this.GridMessagesList.AllowUserToResizeColumns = false;
+            this.GridMessagesList.AllowUserToResizeRows = false;
+            this.GridMessagesList.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.GridMessagesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.GridMessagesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridMessagesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Sender,
+            this.Title});
+            this.TblMessagesMain.SetColumnSpan(this.GridMessagesList, 3);
+            this.GridMessagesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridMessagesList.Location = new System.Drawing.Point(0, 36);
+            this.GridMessagesList.Margin = new System.Windows.Forms.Padding(0);
+            this.GridMessagesList.MultiSelect = false;
+            this.GridMessagesList.Name = "GridMessagesList";
+            this.GridMessagesList.ReadOnly = true;
+            this.TblMessagesMain.SetRowSpan(this.GridMessagesList, 3);
+            this.GridMessagesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridMessagesList.Size = new System.Drawing.Size(234, 331);
+            this.GridMessagesList.TabIndex = 9;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Sender
+            // 
+            this.Sender.HeaderText = "Sender";
+            this.Sender.Name = "Sender";
+            this.Sender.ReadOnly = true;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
             // 
             // FrmMainTeacher
             // 
@@ -604,20 +639,23 @@
         private System.Windows.Forms.RadioButton RadEdit;
         private System.Windows.Forms.Button BtnOperation;
         private System.Windows.Forms.DataGridView GridGradeInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeTask;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeComment;
         private System.Windows.Forms.TabPage TabMessages;
         private System.Windows.Forms.TableLayoutPanel TblMessagesMain;
         private System.Windows.Forms.Button BtnMessageDeleted;
         private System.Windows.Forms.Button BtnMessageSent;
         private System.Windows.Forms.Button BtnMessageRecived;
-        private System.Windows.Forms.DataGridView GridMessagesList;
         private System.Windows.Forms.Button BtnNewMail;
         private System.Windows.Forms.Label LblMessageSender;
         private System.Windows.Forms.Label LblMessageSubject;
         private System.Windows.Forms.Label LblMessageContent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeTask;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGradeComment;
+        private System.Windows.Forms.DataGridView GridMessagesList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
     }
 }

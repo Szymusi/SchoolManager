@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using SchoolManager.Data.Repositories.Classes;
+using SchoolManager.Data.Repositories.Messages;
 using SchoolManager.Data.Repositories.Parents;
 using SchoolManager.Data.Repositories.Students;
 using SchoolManager.Data.Repositories.Teachers;
@@ -7,6 +8,7 @@ using SchoolManager.Data.Repositories.Users;
 using SchoolManager.Desktop.Forms;
 using SchoolManager.Desktop.Services.ComboBoxHelper;
 using SchoolManager.Desktop.Services.GradesTab;
+using SchoolManager.Desktop.Services.MessagesTab;
 using SchoolManager.Logic.Services.Grades;
 using SchoolManager.Logic.Services.Teachers;
 using SchoolManager.Logic.Services.Users;
@@ -27,10 +29,12 @@ namespace SchoolManager.Desktop
             kernel.Bind<IStudentRepository>().To<MockStudentRepository>();
             kernel.Bind<ITeacherRepository>().To<MockTeacherRepository>();
             kernel.Bind<IUserRepository>().To<MockUserRepository>();
+            kernel.Bind<IMessageRepository>().To<MockMessaegRepoeitory>();
             kernel.Bind<IUserService>().To<UserService>().InSingletonScope();
             kernel.Bind<IComboBoxHelperService>().To<ComboBoxHelperService>();
             kernel.Bind<IGradeService>().To<GradeService>();
             kernel.Bind<IGradesTabService>().To<GradesTabService>();
+            kernel.Bind<IMessagesTabService>().To<MessagesTabService>();
             kernel.Bind<ITeacherService>().To<TeacherService>();
             kernel.Bind<FrmMainParent>().ToSelf();
             kernel.Bind<FrmMainStudent>().ToSelf();

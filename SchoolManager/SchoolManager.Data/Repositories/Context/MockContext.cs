@@ -1634,7 +1634,11 @@ namespace SchoolManager.Data.Repositories
             {
                 Id = 1,
                 Sender = DomLis,
-                Receiver = SzyDan,
+                Receivers = new List<User>
+                {
+                    SzyDan, 
+                    PioKwia
+                },
                 Title = "Pierwszy mail",
                 Content = "DUUUUUUUUUUUUUUPA",
                 Deleted = false
@@ -1643,7 +1647,11 @@ namespace SchoolManager.Data.Repositories
             {
                 Id = 2,
                 Sender = JanKow,
-                Receiver = DomLis,
+                Receivers = new List<User>
+                {
+                    DomLis,
+                    SzyDan
+                },
                 Title = "Drugi mail",
                 Content = "Mail na ważny temat",
                 Deleted = false
@@ -1652,7 +1660,11 @@ namespace SchoolManager.Data.Repositories
             {
                 Id = 3,
                 Sender = PawJan,
-                Receiver = DomLis,
+                Receivers = new List<User>
+                {
+                    DomLis,
+                    SzyDan
+                },
                 Title = "Kolejny mail mail",
                 Content = "Mail na mniej ważny temat",
                 Deleted = false
@@ -1661,7 +1673,11 @@ namespace SchoolManager.Data.Repositories
             {
                 Id = 4,
                 Sender = SzyDan,
-                Receiver = DomLis,
+                Receivers = new List<User>
+                {
+                    DomLis,
+                    SzyDan
+                },
                 Title = "Lowki kiski",
                 Content = "Lowciam cię na 100%",
                 Deleted = false
@@ -1670,7 +1686,11 @@ namespace SchoolManager.Data.Repositories
             {
                 Id = 2,
                 Sender = WojWro,
-                Receiver = DomLis,
+                Receivers = new List<User>
+                {
+                    DomLis,
+                    SzyDan
+                },
                 Title = "Jakiś spam do kosza",
                 Content = "Ten mail powinien być w koszu",
                 Deleted = true
